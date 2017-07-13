@@ -15,6 +15,18 @@
     controller.prototype.bindEvent = function(){
         var self = this;
 
+        // simple slide
+        var mySwiper = new Swiper ('.swiper-container', {
+            // Optional parameters
+            loop: false,
+
+            // If we need pagination
+            pagination: '.swiper-pagination',
+
+            // Navigation arrows
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+        })
 
     };
 
