@@ -1319,17 +1319,6 @@ body {
 /*****************************
 * End LOADING
 *****************************/
-.btn {
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  padding: 0.1rem;
-  color: #000;
-  font-size: 0.24rem;
-  box-sizing: border-box;
-  background: #fff;
-}
-
 .pc-wrapper {
   position: absolute;
   left: 0;
@@ -1352,6 +1341,17 @@ body {
 .logo {
   margin: 0 auto 0.5rem;
   width: 3.31rem;
+}
+
+.btn {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 0.12rem;
+  color: #fff;
+  font-size: 0.26rem;
+  box-sizing: border-box;
+  background: #333;
 }
 
 .swiper-container {
@@ -1396,4 +1396,42 @@ body {
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet-active, .swiper-pagination-custom .swiper-pagination-bullet-active, .swiper-pagination-fraction .swiper-pagination-bullet-active {
   background: #333333;
   border: #333333 1px solid;
+}
+
+.panel {
+  width: 6.2rem;
+  margin: 0 auto;
+}
+
+.product-block {
+  text-align: center;
+  border-bottom: #ccc 1px solid;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.26rem;
+}
+.product-block .subname {
+  display: block;
+}
+
+.product-des {
+  line-height: 1.5;
+  font-size: 0.22rem;
+  text-align: justify;
+}
+.product-des .des {
+  margin-bottom: 0.2rem;
+}
+
+.rule-tips {
+  margin: 0.35rem 0;
+  text-align: center;
+}
+
+.buttons .btn {
+  display: inline-block;
+  width: 48%;
+}
+.buttons .btn-follow {
+  float: right;
 }
