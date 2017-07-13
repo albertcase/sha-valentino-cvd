@@ -24,12 +24,13 @@ var path = {
     css:['./src/assets/css/*.css'],
     homeJs:[
         './src/assets/js/lib/zepto.min.js',
-        './src/assets/js/lib/pre-loader.js',
-        './src/assets/js/lib/cookie.js',
+        //'./src/assets/js/lib/pre-loader.js',
+        //'./src/assets/js/lib/cookie.js',
+        './src/assets/js/lib/swiper.min.js',
         './src/assets/js/rem.js',
         './src/assets/js/common.js',
         //'./src/assets/js/api.js',
-        './src/assets/js/wxshare.js',
+        //'./src/assets/js/wxshare.js',
         './src/assets/js/home.js',
     ],
     productlistJs:[
