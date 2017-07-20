@@ -48,9 +48,20 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 					docEl.style.fontSize = 100 * (width / 750) + 'px';
 				}
       };
-    recalc();
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.indexOf('mobile')> -1){
+        recalc();
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+    }else{
+        console.log('pc1 version');
+        document.querySelector('html').className = 'page-pc';
+        //docEl.style.fontSize = '50px';
+
+
+
+    }
+
 })(document, window);
 /*
 * This file listed url parameter(hmsr) map the follow qrcode image src
@@ -244,17 +255,21 @@ $(document).ready(function(){
         var self = this;
 
         // simple slide
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            loop: false,
 
-            // If we need pagination
-            pagination: '.swiper-pagination',
 
-            // Navigation arrows
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        });
+        if(navigator.userAgent.toLocaleLowerCase().indexOf('mobile')>-1){
+            var mySwiper = new Swiper ('.swiper-container', {
+                // Optional parameters
+                loop: false,
+
+                // If we need pagination
+                pagination: '.swiper-pagination',
+
+                // Navigation arrows
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+        }
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
@@ -267,7 +282,7 @@ $(document).ready(function(){
         });
 
         // for buy button
-        $('.btn-buy').on('touchstart', function(){
+        $('.btn-buy').on('touchstart click', function(){
             //go second page and show qrcode img
             Common.gotoPin(1);
             self.generateQrcode();
