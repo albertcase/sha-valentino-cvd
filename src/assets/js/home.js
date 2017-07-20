@@ -3,7 +3,7 @@
  * */
 ;(function(){
     var controller = function(){
-        this.enableScroll = false;
+        this.browserVersion = 'web';
     };
     //init
     controller.prototype.init = function(){
@@ -26,7 +26,23 @@
             // Navigation arrows
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
-        })
+        });
+
+        //Show rule pop
+        $('.show-rule').on('touchstart', function(){
+            Common.alertBox.add('ldlldld')
+        });
+
+        // for buy button
+        $('.btn-buy').on('touchstart', function(){
+            console.log('btn buy');
+        });
+
+        // for follow button
+        $('.btn-follow').on('touchstart', function(){
+            console.log('btn follow');
+            Common.popBox.add('mypop','kkdkdkkd');
+        });
 
     };
 

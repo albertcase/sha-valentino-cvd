@@ -180,6 +180,9 @@ body{
   line-height: 1.5;
   font-size: 0.22rem;
   text-align: justify;
+  p{
+    font-size: 0.22rem;
+  }
   .des{
     margin-bottom: 0.2rem;
   }
@@ -198,4 +201,8 @@ body{
   .btn-follow{
     float: right;
   }
+}
+
+.pop-content{
+  height: 300px;
 }
