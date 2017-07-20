@@ -191,18 +191,64 @@ body{
 .rule-tips{
   margin: 0.35rem 0;
   text-align: center;
+  font-size: 0.2rem;
+  .show-rule{
+    text-decoration: underline;
+  }
 }
 
 .buttons{
+  text-align: center;
   .btn{
     display: inline-block;
-    width: 48%;
+    width: 47%;
+    margin: 0 1%;
   }
   .btn-follow{
-    float: right;
+    //float: right;
   }
 }
 
-.pop-content{
-  height: 300px;
+//for social page
+.pin{
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include size(100%,100%);
+  z-index: -1;
+  opacity: 0;
+  &.current{
+    opacity: 1;
+    z-index: 2;
+  }
+}
+
+#page-follow{
+  .logo{
+    margin-top: 0.6rem;
+  }
+  .des{
+    margin: 1.2rem 0;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #333;
+  }
+  .qrcode{
+    margin: 0 auto;
+    @include size(3rem,3rem);
+  }
+}
+
+#pop-rules{
+  .inner{
+    width: 86vw;
+  }
+  .rule-content{
+    padding:0.35rem 0.5rem;
+    p{
+      font-size: 0.22rem;
+      line-height: 1.6;
+      margin-bottom: 0.4rem;
+    }
+  }
 }

@@ -8,6 +8,7 @@
     //init
     controller.prototype.init = function(){
         var self = this;
+        Common.gotoPin(0);
         self.bindEvent();
     };
 
@@ -30,30 +31,36 @@
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
-            Common.alertBox.add('ldlldld')
+            var tpl = '<h3 class="title">活动细则与条款</h3>'+
+                '<div class="rule-content"><p>配送与提货<br>您可在订单中选择快递配送或到店自取的方式获取商品。</p>'+
+                '<p>快 递<br>配送费用: 免费<br>配送时间: 免费配送服务的运送时间为发货日起1-5天。</p>'+
+                '<p>寄货目的地与运费<br>在此网站的订单只能配送至中国大陆地区。</p>'+
+                '<p>到店自取<br>线上支付完成后，前往所选择的线下店铺提取商品，提取时须出示本人身份证件及订单确认码。线下店铺将电话确认相关取货信息，如需他人代理提取，需提前告知店铺代理人姓名及身份证件信息。</p></div>';
+            Common.popBox.add('pop-rules',tpl);
         });
 
         // for buy button
         $('.btn-buy').on('touchstart', function(){
-            console.log('btn buy');
-        });
-
-        // for follow button
-        $('.btn-follow').on('touchstart', function(){
-            console.log('btn follow');
-            Common.popBox.add('mypop','kkdkdkkd');
+            //go second page and show qrcode img
+            Common.gotoPin(1);
+            self.generateQrcode();
         });
 
     };
 
-    //calculate all img size
-    controller.prototype.calculateImgSize = function(){
-        for(var i=0;i<$('img').length;i++){
-            $('img').eq(i).css({
-                'width':$('img')[i].naturalWidth/100 + 'rem',
-                'height':$('img')[i].naturalHeight/100 + 'rem'
-            });
+    // generate qrcode image
+    controller.prototype.generateQrcode = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
         };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }
+        });
+
     };
 
 
@@ -62,33 +69,6 @@
 
         var newFollow = new controller();
             newFollow.init();
-            //newFollow.calculateImgSize();
-
-        //var u = navigator.userAgent,
-        //    app = navigator.appVersion;
-        //
-        //if (!!u.match(/AppleWebKit.*Mobile.*/)) {
-        //    //mobile
-        //    $('.showonpc').remove();
-        //    var newFollow = new controller();
-        //    newFollow.init();
-        //
-        //    document.body.addEventListener('touchmove', function(evt) {
-        //        //In this case, the default behavior is scrolling the body, which
-        //        //would result in an overflow.  Since we don't want that, we preventDefault.
-        //        if(!evt._isScroller) {
-        //            evt.preventDefault();
-        //        }
-        //    });
-        //    Common.overscroll(document.querySelector('.terms-pop .pcontent'));
-        //} else {
-        //    //pc
-        //    $('.loading').remove();
-        //    $('.mod-orient-layer').remove();
-        //    $('.wrapper').remove();
-        //
-        //}
-
 
     });
 
