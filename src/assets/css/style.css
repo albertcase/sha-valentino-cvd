@@ -1340,6 +1340,10 @@ body {
   width: 3.31rem;
 }
 
+.showonpc {
+  display: none;
+}
+
 .btn {
   text-align: center;
   display: block;
@@ -1469,6 +1473,9 @@ body {
   width: 3rem;
   height: 3rem;
 }
+#page-follow .desforpc {
+  display: none;
+}
 
 #pop-rules .inner {
   width: 86vw;
@@ -1550,4 +1557,13 @@ body {
 .page-pc .buttons .btn {
   margin-top: 20px;
   width: 100%;
+}
+.page-pc .showonmobile {
+  display: none;
+}
+.page-pc .showonpc {
+  display: block;
+}
+.page-pc #page-follow .qrcode {
+  margin: 1.2rem auto;
 }

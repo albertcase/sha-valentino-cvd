@@ -109,8 +109,9 @@ body{
   margin: 0 auto 0.5rem;
   width: 3.31rem;
 }
-
-
+.showonpc{
+  display: none;
+}
 .btn{
   text-align: center;
   display: block;
@@ -237,6 +238,9 @@ body{
     margin: 0 auto;
     @include size(3rem,3rem);
   }
+  .desforpc{
+    display: none;
+  }
 }
 
 #pop-rules{
@@ -324,4 +328,16 @@ body{
       width: 100%;
     }
   }
+  .showonmobile{
+    display: none;
+  }
+  .showonpc{
+    display: block;
+  }
+  #page-follow{
+    .qrcode{
+      margin: 1.2rem auto;
+    }
+  }
+
 }
