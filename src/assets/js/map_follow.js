@@ -3,12 +3,12 @@
 * */
 var mapFollow = [
     {
-        channel: 'Weibo'
+        channel: 'Weibo',
         hmsr:'social_weibo',
         src: '/src/dist/images/dist/qrcode-follow/19weibofollow.png'
     },
     {
-        channel: 'Search'
+        channel: 'Search',
         hmsr:'social_search',
         src: '/src/dist/images/dist/qrcode-follow/20searchfollow.png'
     },
