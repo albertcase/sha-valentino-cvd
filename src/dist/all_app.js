@@ -69,8 +69,8 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 var mapFollow = [
     {
         channel: 'default',
-        hmsr:'social_weibo',
-        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+        hmsr:'default',
+        src: '/src/dist/images/qrcode-follow/default.png'
     },
     {
         channel: 'Weibo',
@@ -382,7 +382,7 @@ Api = {
 
     // generate qrcode image
     controller.prototype.generateQrcode = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -392,7 +392,7 @@ Api = {
                 qrImg.src = item.src;
             }
         });
-
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     /*
@@ -409,7 +409,7 @@ Api = {
 
     // the follow qrcode popup
     controller.prototype.qrcodePopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -419,8 +419,9 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }
+            };
         });
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     $(document).ready(function(){

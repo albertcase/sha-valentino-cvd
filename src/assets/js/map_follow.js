@@ -4,8 +4,8 @@
 var mapFollow = [
     {
         channel: 'default',
-        hmsr:'social_weibo',
-        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+        hmsr:'default',
+        src: '/src/dist/images/qrcode-follow/default.png'
     },
     {
         channel: 'Weibo',
