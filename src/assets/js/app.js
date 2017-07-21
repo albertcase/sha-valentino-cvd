@@ -110,25 +110,6 @@
         });
     };
 
-    // the follow qrcode popup
-    controller.prototype.followPopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
-        var qrImg = new Image();
-        qrImg.onload = function(){
-            $('.qrcode').html('<img src="'+qrImg.src+'">');
-            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
-            Common.popBox.add('follow-popup',tpl);
-        };
-        mapFollow.forEach(function(item){
-            if(item.hmsr == curHmsr){
-                qrImg.src = item.src;
-            }
-        });
-
-    };
-
-
-
     $(document).ready(function(){
 
         var newFollow = new controller();

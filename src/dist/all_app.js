@@ -85,28 +85,69 @@ var mapFollow = [
     {
         channel: 'Banner ad - H5',
         hmsr:'ad_banner',
-        src: '/src/dist/images/qrcode-follow/20searchfollow.png'
+        src: '/src/dist/images/qrcode-follow/21bannerfollow.png'
     },
     {
         channel: 'Moments ad',
-        hmsr:'ad_moments',
+        hmsr:'app_generalfollow',
         src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
     {
         channel: 'KOL 1',
-        hmsr:'ad_k1',
+        hmsr:'ad_moments',
         src: '/src/dist/images/qrcode-follow/23momentsfollow.png'
     },
     {
-        channel: 'KOL 2',
-        hmsr:'ad_k2',
+        channel: 'KOL 1',
+        hmsr:'ad_k1',
         src: '/src/dist/images/qrcode-follow/24kol1follow.png'
     },
     {
         channel: 'KOL 3',
-        hmsr:'ad_k3',
+        hmsr:'ad_ma1',
         src: '/src/dist/images/qrcode-follow/25ma1follow.png'
     },
+    {
+        channel: 'MA2',
+        hmsr:'ad_ma2',
+        src: '/src/dist/images/qrcode-follow/26ma2follow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/27postfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'app_post',
+        src: '/src/dist/images/qrcode-follow/28generalfollow.png'
+    },
+    {
+        channel: 'wechat menu',
+        hmsr:'app_menu',
+        src: '/src/dist/images/qrcode-follow/29menufollow.png'
+    },
+    {
+        channel: 'keywords',
+        hmsr:'app_keyword',
+        src: '/src/dist/images/qrcode-follow/30keywordsfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'newsletter',
+        src: '/src/dist/images/qrcode-follow/31newsletterfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/32homepagefollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/33retail1follow.png'
+    },
+
 ]
 ;(function(){
     //load different template for different device
@@ -377,25 +418,6 @@ Api = {
             }
         });
     };
-
-    // the follow qrcode popup
-    controller.prototype.followPopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
-        var qrImg = new Image();
-        qrImg.onload = function(){
-            $('.qrcode').html('<img src="'+qrImg.src+'">');
-            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
-            Common.popBox.add('follow-popup',tpl);
-        };
-        mapFollow.forEach(function(item){
-            if(item.hmsr == curHmsr){
-                qrImg.src = item.src;
-            }
-        });
-
-    };
-
-
 
     $(document).ready(function(){
 
