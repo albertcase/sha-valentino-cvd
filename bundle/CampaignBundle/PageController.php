@@ -74,6 +74,6 @@ class PageController extends Controller {
 
 	# api 验证是否有库存
 	private function checkStock(){
-		return false;
+		return true;
 	}
 }
