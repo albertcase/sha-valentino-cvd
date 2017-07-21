@@ -366,7 +366,12 @@ $(document).ready(function(){
          * */
         $('.btn-buy').on('touchstart', function(){
             if(!$('.btn-buy').hasClass('disabled')){
-                self.generateRedirectUrl();
+                if(document.getElementById('isagree').checked){
+                    self.generateRedirectUrl();
+                }else{
+                    Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+                }
+
             }
 
         });

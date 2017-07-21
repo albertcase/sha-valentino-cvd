@@ -44,8 +44,12 @@
         // for buy button
         $('.btn-buy').on('touchstart click', function(){
             //go second page and show qrcode img
-            Common.gotoPin(1);
-            self.generateQrcode();
+            if(document.getElementById('isagree').checked){
+                Common.gotoPin(1);
+                self.generateQrcode();
+            }else{
+                Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+            }
         });
 
         /*

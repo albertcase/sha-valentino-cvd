@@ -376,7 +376,11 @@ Api = {
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
             if(!$('.btn-buy').hasClass('disabled')){
-                window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+                if(document.getElementById('isagree').checked){
+                    window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+                }else{
+                    Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+                }
             }
         });
 

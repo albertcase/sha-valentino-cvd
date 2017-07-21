@@ -407,3 +407,13 @@ body{
     @include transform(translateY(-50%));
   }
 }
+
+/*
+* For alert-pop
+*/
+#alert-pop{
+  .pop-content{
+    padding: 0.5rem;
+    text-align: center;
+  }
+}

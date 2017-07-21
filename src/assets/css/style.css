@@ -1636,3 +1636,11 @@ body {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+/*
+* For alert-pop
+*/
+#alert-pop .pop-content {
+  padding: 0.5rem;
+  text-align: center;
+}
