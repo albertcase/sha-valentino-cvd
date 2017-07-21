@@ -319,6 +319,15 @@ $(document).ready(function(){
         var self = this;
         Common.gotoPin(0);
         self.bindEvent();
+
+        /*
+        * If there's no stock, disabled the btn
+        * */
+        Api.isStock(function(data){
+            if(data.status!==1){
+                $('.btn-buy').addClass('disabled');
+            }
+        });
     };
 
     //Bind Event
@@ -356,13 +365,9 @@ $(document).ready(function(){
          * if not stock, disabled the button
          * */
         $('.btn-buy').on('touchstart', function(){
-            Api.isStock(function(data){
-                if(data.status==1){
-                    self.generateRedirectUrl();
-                }else{
-                    $('.btn-buy').addClass('disabled');
-                }
-            });
+            if(!$('.btn-buy').hasClass('disabled')){
+                self.generateRedirectUrl();
+            }
 
         });
 
