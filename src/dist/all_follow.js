@@ -231,7 +231,6 @@ $(document).ready(function(){
     qrImg.onload = function(){
         $('.qrcode').html('<img src="'+qrImg.src+'">');
     };
-    console.log(123);
     mapFollow.forEach(function(item){
         if(item.hmsr == curHmsr){
             qrImg.src = item.src;
