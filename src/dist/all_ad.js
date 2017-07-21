@@ -48,12 +48,74 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 					docEl.style.fontSize = 100 * (width / 750) + 'px';
 				}
       };
-    recalc();
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.indexOf('mobile')> -1){
+        recalc();
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+    }else{
+        console.log('pc1 version');
+        document.querySelector('html').className = 'page-pc';
+        //docEl.style.fontSize = '50px';
+
+
+
+    }
+
 })(document, window);
+/*
+* This file listed url parameter(hmsr) map the follow qrcode image src
+* */
+var mapFollow = [
+    {
+        channel: 'default',
+        hmsr:'social_weibo',
+        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+    },
+    {
+        channel: 'Weibo',
+        hmsr:'social_weibo',
+        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+    },
+    {
+        channel: 'Search',
+        hmsr:'social_search',
+        src: '/src/dist/images/qrcode-follow/20searchfollow.png'
+    },
+    {
+        channel: 'Banner ad - H5',
+        hmsr:'ad_banner',
+        src: '/src/dist/images/qrcode-follow/20searchfollow.png'
+    },
+    {
+        channel: 'Moments ad',
+        hmsr:'ad_moments',
+        src: '/src/dist/images/qrcode-follow/22generalfollow.png'
+    },
+    {
+        channel: 'KOL 1',
+        hmsr:'ad_k1',
+        src: '/src/dist/images/qrcode-follow/23momentsfollow.png'
+    },
+    {
+        channel: 'KOL 2',
+        hmsr:'ad_k2',
+        src: '/src/dist/images/qrcode-follow/24kol1follow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/25ma1follow.png'
+    },
+]
 ;(function(){
+    //load different template for different device
+    //
 	var ua = navigator.userAgent.toLowerCase();
+    //if(ua.indexOf('mobile')>-1){
+    //
+    //}
+    //console.log(ua);
 	var Common = {
 		gotoPin:function(num){
 			$('.wrapper .pin').removeClass('current');
@@ -92,6 +154,14 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 				$('.ajaxpop').remove();
 			}
 		},
+        popBox:{
+            add:function(id,tpl){
+                $('body').append('<div class="popup show" id="'+id+'"><div class="inner"><div class="pop-content">'+tpl+'</div><div class="btn-close">close</div></div></div>');
+            },
+            remove:function(){
+                $('.popup').remove();
+            }
+        },
 		errorMsg : {
 			add:function(ele,msg){
 
@@ -117,31 +187,6 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 						return;
 					}
 				}
-			}
-		},
-		errorMsgBox : {
-			add:function(msg){
-				if(!$('.msgbox').length){
-					$('#pin-fillform').append('<div class="msgbox">'+msg+'</div>');
-				}else{
-					$('#pin-fillform .msgbox').html(msg);
-				}
-				var rvMsgBox = setTimeout(function(){
-					$('.msgbox').remove();
-				},3000);
-			},
-			remove:function(ele){
-				if($('.msgbox').length){
-					$('.msgbox').remove();
-				}
-			}
-		},
-		alertBox:{
-			add:function(msg){
-				$('body').append('<div class="alertpop msgbox"><div class="inner"><div class="msg">'+msg+'</div><div class="btn-alert-ok">关闭</div></div></div>');
-			},
-			remove:function(){
-				$('.alertpop').remove();
 			}
 		},
 		overscroll: function(el){
@@ -174,182 +219,19 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 
 
 	this.Common = Common;
+    console.log(this);
 
 }).call(this);
-
-//var isScroll=false;
-//var noBounce = function() {
-//	var module = {};
-//
-//	var settings = {
-//		animate: false
-//	};
-//
-//	var track = [];
-//
-//	var velocity = {
-//		x: 0,
-//		y: 0
-//	};
-//
-//	var vector = {
-//		subtraction: function(v1, v2) {
-//			return {
-//				x: v1.x - v2.x,
-//				y: v1.y - v2.y
-//			};
-//		},
-//		length: function(v) {
-//			return Math.sqrt((v.x * v.x) + (v.y * v.y));
-//		},
-//		unit: function(v) {
-//			var length = vector.length(v);
-//			v.x /= length;
-//			v.y /= length;
-//		},
-//		skalarMult: function(v, s) {
-//			v.x *= s;
-//			v.y *= s;
-//		}
-//	};
-//
-//	var requestAnimFrame = (function() {
-//		return window.requestAnimationFrame ||
-//			window.webkitRequestAnimationFrame ||
-//			window.mozRequestAnimationFrame ||
-//			window.oRequestAnimationFrame ||
-//			window.msRequestAnimationFrame ||
-//			function(callback) {
-//				window.setTimeout(callback, 1000 / 60);
-//			};
-//	})();
-//
-//	function handleTouchStart(evt) {
-//		var point,
-//			touch;
-//
-//		touch = evt.changedTouches[0];
-//		point = {
-//			x: touch.clientX,
-//			y: touch.clientY,
-//			timeStamp: evt.timeStamp
-//		};
-//		track = [point];
-//	}
-//
-//	function handleTouchMove(evt) {
-//		var point,
-//			touch;
-//
-//
-//		if(isScroll){
-//			//touch = evt.changedTouches[0];
-//			//point = {
-//			//	x: touch.clientX,
-//			//	y: touch.clientY,
-//			//	timeStamp: evt.timeStamp
-//			//};
-//			//track.push(point);
-//			//doScroll();
-//			evt.stopPropagation();
-//			return;
-//		}
-//		evt.preventDefault();
-//
-//
-//	}
-//
-//	function handleTouchEnd(evt) {
-//		if (track.length > 2 && settings.animate) {
-//			velocity = calcVelocity();
-//			requestAnimFrame(animate);
-//		}
-//	}
-//
-//	function calcVelocity() {
-//		var p1,
-//			p2,
-//			v,
-//			timeDiff,
-//			length;
-//
-//		p1 = track[0];
-//		p2 = track[track.length - 1];
-//		timeDiff = p2.timeStamp - p1.timeStamp;
-//		v = vector.subtraction(p2, p1);
-//		length = vector.length(v);
-//		vector.unit(v);
-//		vector.skalarMult(v, length / timeDiff * 20);
-//		return v;
-//	}
-//
-//	function doScroll() {
-//		var p1,
-//			p2,
-//			x,
-//			y;
-//
-//		if (track.length > 1) {
-//			p1 = track[track.length - 1];
-//			p2 = track[track.length - 2];
-//			x = p2.x - p1.x;
-//			y = p2.y - p1.y;
-//			requestAnimFrame(function() {
-//				window.scrollBy(x, y);
-//			});
-//		}
-//	}
-//
-//	function animate() {
-//		scrollBy(-velocity.x, -velocity.y);
-//		vector.skalarMult(velocity, 0.95);
-//		if (vector.length(velocity) > 0.2) {
-//			requestAnimFrame(animate);
-//		}
-//	}
-//
-//	//Returns true if it is a DOM element
-//	function isElement(o) {
-//		return (
-//			typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
-//			o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string"
-//		);
-//	}
-//
-//	module.init = function(options) {
-//		if (typeof options.animate === "boolean") {
-//			settings.animate = options.animate;
-//		}
-//		if (isElement(options.element)) {
-//			settings.element = options.element;
-//		}
-//
-//		var element = settings.element || document;
-//
-//		element.addEventListener("touchstart", handleTouchStart);
-//		element.addEventListener("touchmove", handleTouchMove);
-//		element.addEventListener("touchend", handleTouchEnd);
-//		element.addEventListener("touchcancel", handleTouchEnd);
-//		element.addEventListener("touchleave", handleTouchEnd);
-//	};
-//
-//	return module;
-//}();
-
-//noBounce.init({
-//	animate: false
-//});
 
 
 $(document).ready(function(){
 
-//	close alert pop
-	$('body').on('touchstart','.btn-alert-ok',function(){
-		$(this).parent().parent('.alertpop').remove();
+    //	close popup
+	$('body').on('touchstart',function(e){
+        if(e.target.className.indexOf('popup') > -1 || e.target.className.indexOf('btn-close') > -1){
+            $('.popup').remove();
+        }
 	});
-	//$('body').on('touchstart',function(e){
-	//	e.preventDefault();
-	//});
 
 
 
@@ -364,11 +246,12 @@ $(document).ready(function(){
  * */
 ;(function(){
     var controller = function(){
-        this.enableScroll = false;
+        this.browserVersion = 'web';
     };
     //init
     controller.prototype.init = function(){
         var self = this;
+        Common.gotoPin(0);
         self.bindEvent();
     };
 
@@ -377,28 +260,110 @@ $(document).ready(function(){
         var self = this;
 
         // simple slide
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            loop: false,
+        if(navigator.userAgent.toLocaleLowerCase().indexOf('mobile')>-1){
+            var mySwiper = new Swiper ('.swiper-container', {
+                // Optional parameters
+                loop: false,
 
-            // If we need pagination
-            pagination: '.swiper-pagination',
+                // If we need pagination
+                pagination: '.swiper-pagination',
 
-            // Navigation arrows
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        })
+                // Navigation arrows
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+        }
+
+        //Show rule pop
+        $('.show-rule').on('touchstart', function(){
+            var tpl = '<h3 class="title">活动细则与条款</h3>'+
+                '<div class="rule-content"><p>配送与提货<br>您可在订单中选择快递配送或到店自取的方式获取商品。</p>'+
+                '<p>快 递<br>配送费用: 免费<br>配送时间: 免费配送服务的运送时间为发货日起1-5天。</p>'+
+                '<p>寄货目的地与运费<br>在此网站的订单只能配送至中国大陆地区。</p>'+
+                '<p>到店自取<br>线上支付完成后，前往所选择的线下店铺提取商品，提取时须出示本人身份证件及订单确认码。线下店铺将电话确认相关取货信息，如需他人代理提取，需提前告知店铺代理人姓名及身份证件信息。</p></div>';
+            Common.popBox.add('pop-rules',tpl);
+        });
+
+        /*
+         * for buy button
+         * if follow, join all parameter and redirect
+         * if not, follow the qrcode first
+         * */
+        $('.btn-buy').on('touchstart', function(){
+            self.generateRedirectUrl();
+        });
+
+        //    btn-follow
+        $('.btn-follow').on('touchstart', function(){
+            //go second page and show qrcode img
+            //Common.gotoPin(1);
+            self.qrcodePopup();
+        });
 
     };
 
-    //calculate all img size
-    controller.prototype.calculateImgSize = function(){
-        for(var i=0;i<$('img').length;i++){
-            $('img').eq(i).css({
-                'width':$('img')[i].naturalWidth/100 + 'rem',
-                'height':$('img')[i].naturalHeight/100 + 'rem'
-            });
+    // generate qrcode image
+    controller.prototype.generateQrcode = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
         };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }
+        });
+
+    };
+
+    /*
+     * Generate url with hmsr and timestamp
+     * */
+    controller.prototype.generateRedirectUrl = function(url){
+        //var url = url;
+        console.log('generateRedirectUrl');
+        var curHmsr = Common.getParameterByName('hmsr');
+        var timestamp=Math.round(new Date().getTime()/1000);
+        var redirectUrl = ''+'?hmsr='+curHmsr+'&t='+timestamp;
+        window.location.href = redirectUrl;
+    };
+
+    // the follow qrcode popup
+    controller.prototype.qrcodePopup = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
+            var tpl = '<div class="qrcode"><img src="'+qrImg.src+'"></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p>';
+            Common.popBox.add('qrcode-popup',tpl);
+        };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }else{
+                qrImg.src = mapFollow[0].src; //set default
+            }
+        });
+    };
+
+    // the follow qrcode popup
+    controller.prototype.followPopup = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
+            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
+            Common.popBox.add('follow-popup',tpl);
+        };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }else{
+                qrImg.src = mapFollow[0].src; //set default
+            }
+        });
+
     };
 
 
@@ -406,34 +371,7 @@ $(document).ready(function(){
     $(document).ready(function(){
 
         var newFollow = new controller();
-            newFollow.init();
-            //newFollow.calculateImgSize();
-
-        //var u = navigator.userAgent,
-        //    app = navigator.appVersion;
-        //
-        //if (!!u.match(/AppleWebKit.*Mobile.*/)) {
-        //    //mobile
-        //    $('.showonpc').remove();
-        //    var newFollow = new controller();
-        //    newFollow.init();
-        //
-        //    document.body.addEventListener('touchmove', function(evt) {
-        //        //In this case, the default behavior is scrolling the body, which
-        //        //would result in an overflow.  Since we don't want that, we preventDefault.
-        //        if(!evt._isScroller) {
-        //            evt.preventDefault();
-        //        }
-        //    });
-        //    Common.overscroll(document.querySelector('.terms-pop .pcontent'));
-        //} else {
-        //    //pc
-        //    $('.loading').remove();
-        //    $('.mod-orient-layer').remove();
-        //    $('.wrapper').remove();
-        //
-        //}
-
+        newFollow.init();
 
     });
 

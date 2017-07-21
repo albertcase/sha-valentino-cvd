@@ -22,39 +22,39 @@ var path = {
     ],
     template:['*.html'],
     css:['./src/assets/css/*.css'],
-    homeJs:[
+    socialJs:[
         './src/assets/js/lib/zepto.min.js',
-        //'./src/assets/js/lib/pre-loader.js',
-        //'./src/assets/js/lib/cookie.js',
         './src/assets/js/lib/swiper.min.js',
         './src/assets/js/rem.js',
+        './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
-        //'./src/assets/js/api.js',
-        //'./src/assets/js/wxshare.js',
-        './src/assets/js/home.js',
+        './src/assets/js/social.js'
     ],
-    productlistJs:[
+    adJs:[
         './src/assets/js/lib/zepto.min.js',
-        './src/assets/js/lib/pre-loader.js',
         './src/assets/js/lib/swiper.min.js',
         './src/assets/js/rem.js',
-        './src/assets/js/productjson.js',
+        './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
-        //'./src/assets/js/api.js',
-        './src/assets/js/wxshare.js',
-        './src/assets/js/productlist.js',
+        './src/assets/js/ad.js'
     ],
-    productJs:[
+    appJs:[
         './src/assets/js/lib/zepto.min.js',
-        './src/assets/js/lib/pre-loader.js',
         './src/assets/js/lib/swiper.min.js',
-        './src/assets/js/lib/cookie.js',
         './src/assets/js/rem.js',
-        './src/assets/js/productjson.js',
+        './src/assets/js/map_follow.js',
+        './src/assets/js/common.js',
+        './src/assets/js/api.js',
+        './src/assets/js/app.js'
+    ],
+    followJs:[
+        './src/assets/js/lib/zepto.min.js',
+        //'./src/assets/js/lib/swiper.min.js',
+        './src/assets/js/rem.js',
+        './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
         //'./src/assets/js/api.js',
-        './src/assets/js/wxshare.js',
-        './src/assets/js/singleproduct.js',
+        './src/assets/js/follow.js'
     ],
     images:[
         './src/assets/*.{png,jpg,jpeg}',
@@ -102,27 +102,36 @@ gulp.task('audio',['clean'],function () {
 });
 
 // Concatenate & Minify
-gulp.task('scripts_home',['clean'], function() {
-    return gulp.src(path.homeJs)
-        .pipe(concat('all_home.js'))
+gulp.task('scripts_social',['clean'], function() {
+    return gulp.src(path.socialJs)
+        .pipe(concat('all_social.js'))
         .pipe(gulp.dest('./src/dist'))
-        .pipe(rename('all_home.min.js'))
+        .pipe(rename('all_social.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
-gulp.task('scripts_productlist',['clean'], function() {
-    return gulp.src(path.productlistJs)
-        .pipe(concat('all_productlist.js'))
+gulp.task('scripts_ad',['clean'], function() {
+    return gulp.src(path.adJs)
+        .pipe(concat('all_ad.js'))
         .pipe(gulp.dest('./src/dist'))
-        .pipe(rename('all_productlist.min.js'))
+        .pipe(rename('all_ad.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
-gulp.task('scripts_product',['clean'], function() {
-    return gulp.src(path.productJs)
-        .pipe(concat('all_product.js'))
+gulp.task('scripts_app',['clean'], function() {
+    return gulp.src(path.appJs)
+        .pipe(concat('all_app.js'))
         .pipe(gulp.dest('./src/dist'))
-        .pipe(rename('all_product.min.js'))
+        .pipe(rename('all_app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+
+gulp.task('scripts_follow',['clean'], function() {
+    return gulp.src(path.followJs)
+        .pipe(concat('all_follow.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('all_follow.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
@@ -143,12 +152,13 @@ gulp.task("tinypng", function(){
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
     gulp.watch(path.css,['css']);
-    gulp.watch(path.homeJs,['scripts_home']);
-    //gulp.watch(path.productlistJs,['scripts_productlist']);
-    //gulp.watch(path.productJs,['scripts_product']);
+    gulp.watch(path.socialJs,['scripts_social']);
+    gulp.watch(path.adJs,['scripts_ad']);
+    gulp.watch(path.appJs,['scripts_app']);
+    gulp.watch(path.followJs,['scripts_follow']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'css','scripts_home','browser-sync']);
+gulp.task('default', ['watch', 'css','scripts_social','scripts_ad','scripts_app','scripts_follow','browser-sync']);
 
 

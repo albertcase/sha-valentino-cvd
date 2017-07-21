@@ -27,7 +27,18 @@
 					docEl.style.fontSize = 100 * (width / 750) + 'px';
 				}
       };
-    recalc();
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.indexOf('mobile')> -1){
+        recalc();
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+    }else{
+        console.log('pc1 version');
+        document.querySelector('html').className = 'page-pc';
+        //docEl.style.fontSize = '50px';
+
+
+
+    }
+
 })(document, window);

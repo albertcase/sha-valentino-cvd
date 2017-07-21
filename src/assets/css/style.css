@@ -76,7 +76,7 @@ html {
 body {
   font-family: PingFangSC-Regular,sans-serif;
   line-height: 1.8;
-  font-size: .28rem;
+  font-size: .26rem;
   color: #4f4f4f;
   background: #fff;
   -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
@@ -166,23 +166,24 @@ p {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background: #fff;
+  background: #fff3ed;
 }
 .popup .title {
-  padding: 0.2rem 0;
+  padding: 0.15rem 0;
   margin: 0 auto;
+  color: #333;
   text-align: center;
-  background: #000;
-  color: #fff;
-  font-size: 0.36rem;
+  font-size: 0.3rem;
+  border-bottom: #ccc 1px solid;
+  letter-spacing: 5px;
 }
 .popup .pcontent {
   padding: 0.4rem 0.4rem;
   margin: 0.4rem auto 0;
-  font-size: 0.28rem;
+  font-size: 0.22rem;
   line-height: 1.6;
   text-align: left;
-  color: #515151;
+  color: #333;
 }
 .popup .pcontent p {
   margin-bottom: 0.3rem;
@@ -205,7 +206,7 @@ p {
   left: 50%;
   margin-left: -0.2rem;
   position: absolute;
-  background: #fff;
+  background: #555;
 }
 .popup .btn-close:after {
   -moz-transform: rotate(45deg);
@@ -1334,13 +1335,13 @@ body {
   margin: 0 auto;
 }
 
-.v-content {
-  width: 100%;
-}
-
 .logo {
   margin: 0 auto 0.5rem;
   width: 3.31rem;
+}
+
+.showonpc {
+  display: none;
 }
 
 .btn {
@@ -1419,6 +1420,9 @@ body {
   font-size: 0.22rem;
   text-align: justify;
 }
+.product-des p {
+  font-size: 0.22rem;
+}
 .product-des .des {
   margin-bottom: 0.2rem;
 }
@@ -1426,12 +1430,185 @@ body {
 .rule-tips {
   margin: 0.35rem 0;
   text-align: center;
+  font-size: 0.2rem;
+}
+.rule-tips .show-rule {
+  text-decoration: underline;
 }
 
+.buttons {
+  text-align: center;
+}
 .buttons .btn {
   display: inline-block;
-  width: 48%;
+  width: 47%;
+  margin: 0 1%;
 }
-.buttons .btn-follow {
+.buttons .btn-buy.disabled {
+  opacity: 0.5;
+}
+
+.pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+}
+.pin.current {
+  opacity: 1;
+  z-index: 2;
+}
+
+#page-follow .logo {
+  margin-top: 0.6rem;
+}
+#page-follow .des {
+  margin: 1.2rem 0;
+  text-align: center;
+  font-size: 0.28rem;
+  color: #333;
+}
+#page-follow .qrcode {
+  margin: 0 auto;
+  width: 3rem;
+  height: 3rem;
+}
+#page-follow .desforpc {
+  display: none;
+}
+
+#pop-rules .inner {
+  width: 86vw;
+}
+#pop-rules .rule-content {
+  padding: 0.35rem 0.5rem;
+}
+#pop-rules .rule-content p {
+  font-size: 0.22rem;
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.page-pc {
+  font-size: 50px;
+}
+.page-pc .wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.page-pc .v-content {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.page-pc .logo {
+  width: 100%;
+  padding: 50px 0;
+  margin: 0;
+  border-bottom: #ccc 1px solid;
+  box-sizing: border-box;
+}
+.page-pc .logo img {
+  width: 300px;
+  margin: 0 auto;
+}
+.page-pc .main-content {
+  width: 880px;
+  margin: 70px auto 0;
+}
+.page-pc .swiper-container {
+  float: left;
+  height: auto;
+  width: 68%;
+  margin-left: -3%;
+}
+.page-pc .panel {
+  width: 35%;
   float: right;
+}
+.page-pc .swiper-button-prev, .page-pc .swiper-container-rtl .swiper-button-next,
+.page-pc .swiper-button-next, .page-pc .swiper-container-rtl .swiper-button-prev {
+  display: none;
+}
+.page-pc .product-block {
+  text-align: left;
+  color: #333;
+  font-size: 15px;
+}
+.page-pc .product-name {
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.page-pc .product-des {
+  color: #888;
+  font-size: 12px;
+}
+.page-pc .rule-tips {
+  display: none;
+}
+.page-pc .buttons .btn {
+  margin-top: 20px;
+  width: 100%;
+}
+.page-pc .showonmobile {
+  display: none;
+}
+.page-pc .showonpc {
+  display: block;
+}
+.page-pc #page-follow .qrcode {
+  margin: 1.2rem auto;
+}
+
+/*
+* for qrcode-popup
+*/
+#qrcode-popup .qrcode {
+  width: 3rem;
+  height: 3rem;
+  margin: 1.2rem auto 0.7rem;
+}
+#qrcode-popup .text {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/*
+* For follow popup
+*/
+#follow-popup .inner {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#follow-popup .btn-close {
+  display: none;
+}
+#follow-popup .logo {
+  margin: 0.6rem auto;
+}
+#follow-popup .text {
+  text-align: center;
+  margin: 1.4rem auto 0.6rem;
+}
+#follow-popup .qrcode {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
 }
