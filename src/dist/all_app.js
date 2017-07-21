@@ -85,28 +85,69 @@ var mapFollow = [
     {
         channel: 'Banner ad - H5',
         hmsr:'ad_banner',
-        src: '/src/dist/images/qrcode-follow/20searchfollow.png'
+        src: '/src/dist/images/qrcode-follow/21bannerfollow.png'
     },
     {
         channel: 'Moments ad',
-        hmsr:'ad_moments',
+        hmsr:'app_generalfollow',
         src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
     {
         channel: 'KOL 1',
-        hmsr:'ad_k1',
+        hmsr:'ad_moments',
         src: '/src/dist/images/qrcode-follow/23momentsfollow.png'
     },
     {
-        channel: 'KOL 2',
-        hmsr:'ad_k2',
+        channel: 'KOL 1',
+        hmsr:'ad_k1',
         src: '/src/dist/images/qrcode-follow/24kol1follow.png'
     },
     {
         channel: 'KOL 3',
-        hmsr:'ad_k3',
+        hmsr:'ad_ma1',
         src: '/src/dist/images/qrcode-follow/25ma1follow.png'
     },
+    {
+        channel: 'MA2',
+        hmsr:'ad_ma2',
+        src: '/src/dist/images/qrcode-follow/26ma2follow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/27postfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'app_post',
+        src: '/src/dist/images/qrcode-follow/28generalfollow.png'
+    },
+    {
+        channel: 'wechat menu',
+        hmsr:'app_menu',
+        src: '/src/dist/images/qrcode-follow/29menufollow.png'
+    },
+    {
+        channel: 'keywords',
+        hmsr:'app_keyword',
+        src: '/src/dist/images/qrcode-follow/30keywordsfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'newsletter',
+        src: '/src/dist/images/qrcode-follow/31newsletterfollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/32homepagefollow.png'
+    },
+    {
+        channel: 'KOL 3',
+        hmsr:'ad_k3',
+        src: '/src/dist/images/qrcode-follow/33retail1follow.png'
+    },
+
 ]
 ;(function(){
     //load different template for different device
@@ -245,73 +286,22 @@ $(document).ready(function(){
 Api = {
     //is fill form
     isStock:function(callback){
-        Common.msgBox.add('loading...');
-        //$.ajax({
-        //    url:'/api/isfollow',
-        //    type:'POST',
-        //    dataType:'json',
-        //    success:function(data){
-        //        Common.msgBox.remove();
-        //        return callback(data);
-        //        //status=1 有库存
-        //    }
-        //});
-
-        return callback({
-            status:0,
-            msg:'follow'
-        })
-
-
-    },
-
-    isLuckyDraw:function(callback){
         //Common.msgBox.add('loading...');
-        Common.msgBox.add('抽奖中...');
         $.ajax({
-            url:'/api/lottery',
+            url:'/api/stock',
             type:'POST',
             dataType:'json',
             success:function(data){
-                var aaa = setTimeout(function(){
-
-                    Common.msgBox.remove();
-                    clearTimeout(aaa);
-                    return callback(data);
-                },3000);
-
+                //Common.msgBox.remove();
+                return callback(data);
                 //status=1 有库存
             }
         });
 
         //return callback({
         //    status:1,
-        //    msg:'zhognjiang'
+        //    msg:'follow'
         //})
-
-
-    },
-    //submit form
-    // name  info
-///api/submit    name mobile province city area address
-    submitInfo:function(obj,callback){
-        Common.msgBox.add('loading...');
-        $.ajax({
-            url:'/api/submit',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                Common.msgBox.remove();
-                return callback(data);
-            }
-        });
-
-        //return callback({
-        //    status:1,
-        //    msg:'提交成功'
-        //});
-
 
     },
 
@@ -366,9 +356,11 @@ Api = {
         * if no stock, disable the button, set opacity to 0.6
         * */
         $('.btn-buy').on('touchstart', function(){
+            var curHmsr = Common.getParameterByName('hmsr');
+            var timestamp=Math.round(new Date().getTime()/1000);
            Api.isStock(function(data){
                if(data.status==1){
-                   window.location.href = '/api/oauth'+window.location.search;
+                   window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
                }else{
                    $('.btn-buy').addClass('disabled');
                }
@@ -394,8 +386,6 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src;
             }
         });
 
@@ -425,32 +415,9 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
     };
-
-    // the follow qrcode popup
-    controller.prototype.followPopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
-        var qrImg = new Image();
-        qrImg.onload = function(){
-            $('.qrcode').html('<img src="'+qrImg.src+'">');
-            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
-            Common.popBox.add('follow-popup',tpl);
-        };
-        mapFollow.forEach(function(item){
-            if(item.hmsr == curHmsr){
-                qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
-            }
-        });
-
-    };
-
-
 
     $(document).ready(function(){
 

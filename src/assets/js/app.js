@@ -47,9 +47,11 @@
         * if no stock, disable the button, set opacity to 0.6
         * */
         $('.btn-buy').on('touchstart', function(){
+            var curHmsr = Common.getParameterByName('hmsr');
+            var timestamp=Math.round(new Date().getTime()/1000);
            Api.isStock(function(data){
                if(data.status==1){
-                   window.location.href = '/api/oauth'+window.location.search;
+                   window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
                }else{
                    $('.btn-buy').addClass('disabled');
                }
@@ -75,8 +77,6 @@
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src;
             }
         });
 
@@ -106,32 +106,9 @@
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
     };
-
-    // the follow qrcode popup
-    controller.prototype.followPopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
-        var qrImg = new Image();
-        qrImg.onload = function(){
-            $('.qrcode').html('<img src="'+qrImg.src+'">');
-            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
-            Common.popBox.add('follow-popup',tpl);
-        };
-        mapFollow.forEach(function(item){
-            if(item.hmsr == curHmsr){
-                qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
-            }
-        });
-
-    };
-
-
 
     $(document).ready(function(){
 

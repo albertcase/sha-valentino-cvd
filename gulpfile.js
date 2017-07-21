@@ -34,6 +34,7 @@ var path = {
         './src/assets/js/lib/zepto.min.js',
         './src/assets/js/lib/swiper.min.js',
         './src/assets/js/rem.js',
+        './src/assets/js/api.js',
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
         './src/assets/js/ad.js'
@@ -53,7 +54,6 @@ var path = {
         './src/assets/js/rem.js',
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
-        //'./src/assets/js/api.js',
         './src/assets/js/follow.js'
     ],
     images:[
