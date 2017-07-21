@@ -234,8 +234,6 @@ $(document).ready(function(){
     mapFollow.forEach(function(item){
         if(item.hmsr == curHmsr){
             qrImg.src = item.src;
-        }else{
-            qrImg.src = mapFollow[0].src;
         }
     });
 

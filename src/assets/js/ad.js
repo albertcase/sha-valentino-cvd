@@ -106,8 +106,6 @@
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
     };
@@ -124,8 +122,6 @@
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
 

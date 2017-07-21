@@ -360,7 +360,6 @@ $(document).ready(function(){
         var redirectUrl = encodeURI('https://wechatshop.valentinoworld.com/static/flow.html?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base');
         var fullUrl = 'http://valentinowechat.samesamechina.com/v1/wx/web/oauth2/authorize?redirect_uri='+redirectUrl;
         window.location.href = fullUrl;
-        
     };
 
     // the follow qrcode popup
@@ -375,8 +374,6 @@ $(document).ready(function(){
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
     };
@@ -393,8 +390,6 @@ $(document).ready(function(){
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
 

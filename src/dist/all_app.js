@@ -245,7 +245,7 @@ $(document).ready(function(){
 Api = {
     //is fill form
     isStock:function(callback){
-        Common.msgBox.add('loading...');
+        //Common.msgBox.add('loading...');
         //$.ajax({
         //    url:'/api/stock',
         //    type:'POST',
@@ -343,8 +343,6 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src;
             }
         });
 
@@ -374,8 +372,6 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
     };
@@ -392,8 +388,6 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }else{
-                qrImg.src = mapFollow[0].src; //set default
             }
         });
 
