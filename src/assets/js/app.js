@@ -15,7 +15,7 @@
          * If there's no stock, disabled the btn
          * */
         Api.isStock(function(data){
-            if(data.status!==1){
+            if(data.status !== 1){
                 $('.btn-buy').addClass('disabled');
             }
         });
