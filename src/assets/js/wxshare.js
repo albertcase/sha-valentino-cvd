@@ -22,7 +22,6 @@ function weixinshare(obj,successCallBack){
             type: '',
             dataUrl: '',
             success: function () {
-                _hmt.push(['_trackEvent', 'wechat', 'click', 'sharetofriends']);
                 successCallBack();
 
             },
@@ -35,7 +34,6 @@ function weixinshare(obj,successCallBack){
             link: obj.link,
             imgUrl: obj.img,
             success: function () {
-                _hmt.push(['_trackEvent', 'wechat', 'click', 'sharetotimeline']);
                 successCallBack();
             },
             cancel: function () {
@@ -47,10 +45,10 @@ function weixinshare(obj,successCallBack){
 
 $(document).ready(function(){
     weixinshare({
-        title1: '搭乘小火箭，入手唐嫣限量同款，和COACH一起漫游太空',
-        des: '抢先入手唐嫣限量同款，发现COACH全新Space限量版系列的无限可能',
-        link: window.location.origin,
-        img: window.location.origin+'/src/dist/images/share.jpg'
+        title1: 'title',
+        des: 'title',
+        link: 'http://cvdvalentino.samesamechina.com/ad.html?hmsr=app_share',
+        img: window.location.origin+'/src/dist/images/logo.png'
     },function(){
         console.log('sharesuccess');
     });

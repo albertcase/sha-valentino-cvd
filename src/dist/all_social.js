@@ -260,8 +260,6 @@ var mapFollow = [
 
 
 	this.Common = Common;
-    console.log(this);
-
 }).call(this);
 
 
@@ -273,9 +271,6 @@ $(document).ready(function(){
             $('.popup').remove();
         }
 	});
-
-
-
 
 });
 
@@ -328,7 +323,6 @@ $(document).ready(function(){
         // for buy button
         $('.btn-buy').on('touchstart click', function(){
             //go second page and show qrcode img
-
             if(document.getElementById('isagree').checked){
                 Common.gotoPin(1);
                 self.generateQrcode();

@@ -37,7 +37,8 @@ var path = {
         './src/assets/js/api.js',
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
-        './src/assets/js/ad.js'
+        './src/assets/js/ad.js',
+        './src/assets/js/wxshare.js'
     ],
     appJs:[
         './src/assets/js/lib/zepto.min.js',
@@ -46,7 +47,8 @@ var path = {
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
         './src/assets/js/api.js',
-        './src/assets/js/app.js'
+        './src/assets/js/app.js',
+        './src/assets/js/wxshare.js'
     ],
     followJs:[
         './src/assets/js/lib/zepto.min.js',

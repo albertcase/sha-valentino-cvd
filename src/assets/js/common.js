@@ -109,8 +109,6 @@
 
 
 	this.Common = Common;
-    console.log(this);
-
 }).call(this);
 
 
@@ -122,9 +120,6 @@ $(document).ready(function(){
             $('.popup').remove();
         }
 	});
-
-
-
 
 });
 
