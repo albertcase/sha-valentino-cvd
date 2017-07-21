@@ -28,7 +28,8 @@ var path = {
         './src/assets/js/rem.js',
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
-        './src/assets/js/social.js'
+        './src/assets/js/social.js',
+        './src/assets/js/wxshare.js'
     ],
     adJs:[
         './src/assets/js/lib/zepto.min.js',
