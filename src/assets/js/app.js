@@ -10,6 +10,15 @@
         var self = this;
         Common.gotoPin(0);
         self.bindEvent();
+
+        /*
+         * If there's no stock, disabled the btn
+         * */
+        Api.isStock(function(data){
+            if(data.status!==1){
+                $('.btn-buy').addClass('disabled');
+            }
+        });
     };
 
     //Bind Event
@@ -43,19 +52,14 @@
 
         /*
         * for buy button
-        * if has stock, backend auth,url is '/api/oauth'
-        * if no stock, disable the button, set opacity to 0.6
+        * if there is stock, backend auth,url is '/api/oauth'
         * */
         $('.btn-buy').on('touchstart', function(){
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
-           Api.isStock(function(data){
-               if(data.status==1){
-                   window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
-               }else{
-                   $('.btn-buy').addClass('disabled');
-               }
-           })
+            if(!$('.btn-buy').hasClass('disabled')){
+                window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+            }
         });
 
     //    btn-follow
