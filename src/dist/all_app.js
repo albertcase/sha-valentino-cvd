@@ -352,8 +352,8 @@ Api = {
         /*
         * If the slideshow has 'showvideo' class, the video popup will show
         */
-        $('.showvideo').on('touchstart', function(){
-            var tpl = "I'm video";
+        $('.showvideo').on('click', function(){
+            var tpl = '<video autoplay controls><source src="/src/media/video.mp4" type="video/mp4"></video>';
             Common.popBox.add('video-popup',tpl);
         });
 
