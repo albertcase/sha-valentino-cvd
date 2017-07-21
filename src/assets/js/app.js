@@ -40,6 +40,15 @@
             });
         }
 
+        /*
+        * If the slideshow has 'showvideo' class, the video popup will show
+        */
+        $('.showvideo').on('touchstart', function(){
+            var tpl = "I'm video";
+            Common.popBox.add('video-popup',tpl);
+        });
+
+
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
             var tpl = '<h3 class="title">活动细则与条款</h3>'+
@@ -58,7 +67,7 @@
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
             if(!$('.btn-buy').hasClass('disabled')){
-                window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+                window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
             }
         });
 
@@ -73,7 +82,7 @@
 
     // generate qrcode image
     controller.prototype.generateQrcode = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -83,7 +92,7 @@
                 qrImg.src = item.src;
             }
         });
-
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     /*
@@ -100,7 +109,7 @@
 
     // the follow qrcode popup
     controller.prototype.qrcodePopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -110,8 +119,9 @@
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }
+            };
         });
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     $(document).ready(function(){

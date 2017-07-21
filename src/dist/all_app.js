@@ -69,8 +69,8 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 var mapFollow = [
     {
         channel: 'default',
-        hmsr:'social_weibo',
-        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+        hmsr:'default',
+        src: '/src/dist/images/qrcode-follow/default.png'
     },
     {
         channel: 'Weibo',
@@ -349,6 +349,15 @@ Api = {
             });
         }
 
+        /*
+        * If the slideshow has 'showvideo' class, the video popup will show
+        */
+        $('.showvideo').on('touchstart', function(){
+            var tpl = "I'm video";
+            Common.popBox.add('video-popup',tpl);
+        });
+
+
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
             var tpl = '<h3 class="title">活动细则与条款</h3>'+
@@ -367,7 +376,7 @@ Api = {
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
             if(!$('.btn-buy').hasClass('disabled')){
-                window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+                window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
             }
         });
 
@@ -382,7 +391,7 @@ Api = {
 
     // generate qrcode image
     controller.prototype.generateQrcode = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -392,7 +401,7 @@ Api = {
                 qrImg.src = item.src;
             }
         });
-
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     /*
@@ -409,7 +418,7 @@ Api = {
 
     // the follow qrcode popup
     controller.prototype.qrcodePopup = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -419,8 +428,9 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
-            }
+            };
         });
+        qrImg.src = qrImg.src || mapFollow[0].src;
     };
 
     $(document).ready(function(){

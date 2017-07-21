@@ -50,8 +50,8 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 var mapFollow = [
     {
         channel: 'default',
-        hmsr:'social_weibo',
-        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+        hmsr:'default',
+        src: '/src/dist/images/qrcode-follow/default.png'
     },
     {
         channel: 'Weibo',
@@ -267,7 +267,7 @@ $(document).ready(function(){
  * Inclue two function, one is load new qr for each person, another is show rule popup
  * */
 ;(function(){
-    var curHmsr = Common.getParameterByName('hmsr');
+    var curHmsr = Common.getParameterByName('hmsr') || 'default';
     var qrImg = new Image();
     qrImg.onload = function(){
         $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -276,7 +276,7 @@ $(document).ready(function(){
         if(item.hmsr == curHmsr){
             qrImg.src = item.src;
         }
-
     });
+    qrImg.src = qrImg.src || mapFollow[0].src;
 
 })();

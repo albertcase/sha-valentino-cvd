@@ -52,7 +52,7 @@
 
     // generate qrcode image
     controller.prototype.generateQrcode = function(){
-        var curHmsr = Common.getParameterByName('hmsr');
+        var curHmsr = Common.getParameterByName('hmsr') || 'default';
         var qrImg = new Image();
         qrImg.onload = function(){
             $('.qrcode').html('<img src="'+qrImg.src+'">');
@@ -62,6 +62,7 @@
                 qrImg.src = item.src;
             }
         });
+        qrImg.src = qrImg.src || mapFollow[0].src;
 
     };
 
