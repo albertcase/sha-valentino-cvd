@@ -44,6 +44,7 @@ var path = {
         './src/assets/js/rem.js',
         './src/assets/js/map_follow.js',
         './src/assets/js/common.js',
+        './src/assets/js/api.js',
         './src/assets/js/app.js'
     ],
     images:[

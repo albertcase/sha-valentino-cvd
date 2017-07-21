@@ -1,23 +1,23 @@
 /*All the api collection*/
 Api = {
     //is fill form
-    isFillForm:function(callback){
-        Common.msgBox.add('loading...');
-        $.ajax({
-            url:'/api/islogin',
-            type:'POST',
-            dataType:'json',
-            success:function(data){
-                Common.msgBox.remove();
-                return callback(data);
-                //status=1 有库存
-            }
-        });
+    isFollow:function(callback){
+        //Common.msgBox.add('loading...');
+        //$.ajax({
+        //    url:'/api/isfollow',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        Common.msgBox.remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
 
-        //return callback({
-        //    status:0,
-        //    msg:'fillform'
-        //})
+        return callback({
+            status:0,
+            msg:'not follow'
+        })
 
 
     },

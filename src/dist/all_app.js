@@ -68,6 +68,11 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 * */
 var mapFollow = [
     {
+        channel: 'default',
+        hmsr:'social_weibo',
+        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+    },
+    {
         channel: 'Weibo',
         hmsr:'social_weibo',
         src: '/src/dist/images/qrcode-follow/19weibofollow.png'
@@ -236,6 +241,82 @@ $(document).ready(function(){
 
 
 
+/*All the api collection*/
+Api = {
+    //is fill form
+    isFollow:function(callback){
+        //Common.msgBox.add('loading...');
+        //$.ajax({
+        //    url:'/api/isfollow',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        Common.msgBox.remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
+
+        return callback({
+            status:0,
+            msg:'not follow'
+        })
+
+
+    },
+
+    isLuckyDraw:function(callback){
+        //Common.msgBox.add('loading...');
+        Common.msgBox.add('抽奖中...');
+        $.ajax({
+            url:'/api/lottery',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                var aaa = setTimeout(function(){
+
+                    Common.msgBox.remove();
+                    clearTimeout(aaa);
+                    return callback(data);
+                },3000);
+
+                //status=1 有库存
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'zhognjiang'
+        //})
+
+
+    },
+    //submit form
+    // name  info
+///api/submit    name mobile province city area address
+    submitInfo:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/submit',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+
+};
 /*For join page
  * Inclue two function, one is load new qr for each person, another is show rule popup
  * */
@@ -246,6 +327,7 @@ $(document).ready(function(){
     //init
     controller.prototype.init = function(){
         var self = this;
+        Common.gotoPin(0);
         self.bindEvent();
     };
 
@@ -254,44 +336,111 @@ $(document).ready(function(){
         var self = this;
 
         // simple slide
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            loop: false,
+        if(navigator.userAgent.toLocaleLowerCase().indexOf('mobile')>-1){
+            var mySwiper = new Swiper ('.swiper-container', {
+                // Optional parameters
+                loop: false,
 
-            // If we need pagination
-            pagination: '.swiper-pagination',
+                // If we need pagination
+                pagination: '.swiper-pagination',
 
-            // Navigation arrows
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        });
+                // Navigation arrows
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+        }
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
-            Common.alertBox.add('ldlldld')
+            var tpl = '<h3 class="title">活动细则与条款</h3>'+
+                '<div class="rule-content"><p>配送与提货<br>您可在订单中选择快递配送或到店自取的方式获取商品。</p>'+
+                '<p>快 递<br>配送费用: 免费<br>配送时间: 免费配送服务的运送时间为发货日起1-5天。</p>'+
+                '<p>寄货目的地与运费<br>在此网站的订单只能配送至中国大陆地区。</p>'+
+                '<p>到店自取<br>线上支付完成后，前往所选择的线下店铺提取商品，提取时须出示本人身份证件及订单确认码。线下店铺将电话确认相关取货信息，如需他人代理提取，需提前告知店铺代理人姓名及身份证件信息。</p></div>';
+            Common.popBox.add('pop-rules',tpl);
         });
 
-        // for buy button
+        /*
+        * for buy button
+        * if follow, join all parameter and redirect
+        * if not, follow the qrcode first
+        * */
         $('.btn-buy').on('touchstart', function(){
-            console.log('btn buy');
+           Api.isFollow(function(data){
+               if(data.status==1){
+                   self.generateRedirectUrl();
+               }else{
+                   self.followPopup();
+               }
+           })
         });
 
-        // for follow button
+    //    btn-follow
         $('.btn-follow').on('touchstart', function(){
-            console.log('btn follow');
-            Common.popBox.add('mypop','kkdkdkkd');
+            //go second page and show qrcode img
+            //Common.gotoPin(1);
+            self.qrcodePopup();
         });
 
     };
 
-    //calculate all img size
-    controller.prototype.calculateImgSize = function(){
-        for(var i=0;i<$('img').length;i++){
-            $('img').eq(i).css({
-                'width':$('img')[i].naturalWidth/100 + 'rem',
-                'height':$('img')[i].naturalHeight/100 + 'rem'
-            });
+    // generate qrcode image
+    controller.prototype.generateQrcode = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
         };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }
+        });
+
+    };
+
+
+    controller.prototype.generateRedirectUrl = function(url){
+        var url = url;
+        console.log('generateRedirectUrl');
+    };
+
+    // the follow qrcode popup
+    controller.prototype.qrcodePopup = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
+            var tpl = '<div class="qrcode"><img src="'+qrImg.src+'"></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p>';
+            Common.popBox.add('qrcode-popup',tpl);
+        };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }else{
+                qrImg.src = mapFollow[0].src; //set default
+            }
+        });
+
+    };
+
+    // the follow qrcode popup
+    controller.prototype.followPopup = function(){
+        var curHmsr = Common.getParameterByName('hmsr');
+        var qrImg = new Image();
+        qrImg.onload = function(){
+            $('.qrcode').html('<img src="'+qrImg.src+'">');
+            var tpl = '<div class="logo"><img src="/src/dist/images/logo.png" alt=""></div><p class="text">关注Valentino官方微信<br>为您提供最新品牌信息和专属服务</p><div class="qrcode"><img src="'+qrImg.src+'"></div>';
+            Common.popBox.add('follow-popup',tpl);
+        };
+        mapFollow.forEach(function(item){
+            if(item.hmsr == curHmsr){
+                qrImg.src = item.src;
+            }else{
+                qrImg.src = mapFollow[0].src; //set default
+            }
+        });
+
     };
 
 
@@ -299,34 +448,7 @@ $(document).ready(function(){
     $(document).ready(function(){
 
         var newFollow = new controller();
-            newFollow.init();
-            //newFollow.calculateImgSize();
-
-        //var u = navigator.userAgent,
-        //    app = navigator.appVersion;
-        //
-        //if (!!u.match(/AppleWebKit.*Mobile.*/)) {
-        //    //mobile
-        //    $('.showonpc').remove();
-        //    var newFollow = new controller();
-        //    newFollow.init();
-        //
-        //    document.body.addEventListener('touchmove', function(evt) {
-        //        //In this case, the default behavior is scrolling the body, which
-        //        //would result in an overflow.  Since we don't want that, we preventDefault.
-        //        if(!evt._isScroller) {
-        //            evt.preventDefault();
-        //        }
-        //    });
-        //    Common.overscroll(document.querySelector('.terms-pop .pcontent'));
-        //} else {
-        //    //pc
-        //    $('.loading').remove();
-        //    $('.mod-orient-layer').remove();
-        //    $('.wrapper').remove();
-        //
-        //}
-
+        newFollow.init();
 
     });
 

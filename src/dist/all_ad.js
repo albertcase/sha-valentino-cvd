@@ -68,6 +68,11 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 * */
 var mapFollow = [
     {
+        channel: 'default',
+        hmsr:'social_weibo',
+        src: '/src/dist/images/qrcode-follow/19weibofollow.png'
+    },
+    {
         channel: 'Weibo',
         hmsr:'social_weibo',
         src: '/src/dist/images/qrcode-follow/19weibofollow.png'

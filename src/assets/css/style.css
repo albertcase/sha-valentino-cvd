@@ -1567,3 +1567,45 @@ body {
 .page-pc #page-follow .qrcode {
   margin: 1.2rem auto;
 }
+
+/*
+* for qrcode-popup
+*/
+#qrcode-popup .qrcode {
+  width: 3rem;
+  height: 3rem;
+  margin: 1.2rem auto 0.7rem;
+}
+#qrcode-popup .text {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/*
+* For follow popup
+*/
+#follow-popup .inner {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#follow-popup .btn-close {
+  display: none;
+}
+#follow-popup .logo {
+  margin: 0.6rem auto;
+}
+#follow-popup .text {
+  text-align: center;
+  margin: 1.4rem auto 0.6rem;
+}
+#follow-popup .qrcode {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+}
