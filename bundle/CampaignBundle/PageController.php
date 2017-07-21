@@ -45,7 +45,7 @@ class PageController extends Controller {
 			$redirect_url = $this->generateRedirectUrl($src, $param);
 			$this->redirect($redirect_url);
 		} else {
-			$this->$redirect('/follow.html');
+			$this->$redirect(BASE_URL . 'follow.html');
 		}
 	}
 	
@@ -55,7 +55,7 @@ class PageController extends Controller {
 		$api_url = 'http://valentinowechat.samesamechina.com/api/v1/follow?openid='.$openid;
 		$data = file_get_contents($api_url);
         $data = json_decode($data);
-        if($data->code == 0) {
+        if($data->code == 200) {
         	return true;
         } else {
         	return false;
