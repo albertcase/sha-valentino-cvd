@@ -45,7 +45,8 @@ class PageController extends Controller {
 			$redirect_url = $this->generateRedirectUrl($src, $param);
 			$this->redirect($redirect_url);
 		} else {
-			$this->redirect(BASE_URL . 'follow.html');
+			$url = $this->generateRedirectUrl(BASE_URL.'follow.html', array('src' => $src));
+			$this->redirect($url);
 		}
 	}
 	
