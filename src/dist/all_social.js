@@ -332,6 +332,13 @@ $(document).ready(function(){
             self.generateQrcode();
         });
 
+        /*
+         * If the slideshow has 'showvideo' class, the video popup will show
+         */
+        $('.showvideo').on('click', function(){
+            var tpl = '<video autoplay controls><source src="/src/media/video.mp4" type="video/mp4"></video>';
+            Common.popBox.add('video-popup',tpl);
+        });
     };
 
     // generate qrcode image
