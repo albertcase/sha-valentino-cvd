@@ -244,8 +244,8 @@ $(document).ready(function(){
 /*All the api collection*/
 Api = {
     //is fill form
-    isFollow:function(callback){
-        //Common.msgBox.add('loading...');
+    isStock:function(callback){
+        Common.msgBox.add('loading...');
         //$.ajax({
         //    url:'/api/isfollow',
         //    type:'POST',
@@ -258,7 +258,7 @@ Api = {
         //});
 
         return callback({
-            status:1,
+            status:0,
             msg:'follow'
         })
 
@@ -362,15 +362,15 @@ Api = {
 
         /*
         * for buy button
-        * if follow, join all parameter and redirect
-        * if not, follow the qrcode first
+        * if has stock, backend auth,url is '/api/oauth'
+        * if no stock, disable the button, set opacity to 0.6
         * */
         $('.btn-buy').on('touchstart', function(){
-           Api.isFollow(function(data){
+           Api.isStock(function(data){
                if(data.status==1){
-                   self.generateRedirectUrl();
+                   window.location.href = '/api/oauth'+window.location.search;
                }else{
-                   self.followPopup();
+                   $('.btn-buy').addClass('disabled');
                }
            })
         });
@@ -394,6 +394,8 @@ Api = {
         mapFollow.forEach(function(item){
             if(item.hmsr == curHmsr){
                 qrImg.src = item.src;
+            }else{
+                qrImg.src = mapFollow[0].src;
             }
         });
 

@@ -1,8 +1,8 @@
 /*All the api collection*/
 Api = {
     //is fill form
-    isFollow:function(callback){
-        //Common.msgBox.add('loading...');
+    isStock:function(callback){
+        Common.msgBox.add('loading...');
         //$.ajax({
         //    url:'/api/isfollow',
         //    type:'POST',
@@ -15,7 +15,7 @@ Api = {
         //});
 
         return callback({
-            status:1,
+            status:0,
             msg:'follow'
         })
 

@@ -208,6 +208,11 @@ body{
   .btn-follow{
     //float: right;
   }
+  .btn-buy{
+    &.disabled{
+      opacity: 0.5;
+    }
+  }
 }
 
 //for social page

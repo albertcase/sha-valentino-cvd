@@ -1444,6 +1444,9 @@ body {
   width: 47%;
   margin: 0 1%;
 }
+.buttons .btn-buy.disabled {
+  opacity: 0.5;
+}
 
 .pin {
   position: absolute;
