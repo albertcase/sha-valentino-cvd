@@ -1410,6 +1410,7 @@ body {
   padding-bottom: 0.2rem;
   margin-bottom: 0.2rem;
   font-size: 0.26rem;
+  color: #333;
 }
 .product-block .subname {
   display: block;
@@ -1422,6 +1423,7 @@ body {
 }
 .product-des p {
   font-size: 0.22rem;
+  color: #888;
 }
 .product-des .des {
   margin-bottom: 0.2rem;
@@ -1431,6 +1433,7 @@ body {
   margin: 0.35rem 0;
   text-align: center;
   font-size: 0.2rem;
+  color: #333;
 }
 .rule-tips .show-rule {
   text-decoration: underline;
