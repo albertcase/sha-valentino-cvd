@@ -258,8 +258,8 @@ Api = {
         //});
 
         return callback({
-            status:0,
-            msg:'not follow'
+            status:1,
+            msg:'follow'
         })
 
 
@@ -399,10 +399,16 @@ Api = {
 
     };
 
-
+    /*
+    * Generate url with hmsr and timestamp
+    * */
     controller.prototype.generateRedirectUrl = function(url){
-        var url = url;
+        //var url = url;
         console.log('generateRedirectUrl');
+        var curHmsr = Common.getParameterByName('hmsr');
+        var timestamp=Math.round(new Date().getTime()/1000);
+        var redirectUrl = ''+'?hmsr='+curHmsr+'&t='+timestamp;
+        window.location.href = redirectUrl;
     };
 
     // the follow qrcode popup
@@ -421,7 +427,6 @@ Api = {
                 qrImg.src = mapFollow[0].src; //set default
             }
         });
-
     };
 
     // the follow qrcode popup

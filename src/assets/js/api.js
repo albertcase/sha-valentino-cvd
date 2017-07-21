@@ -15,8 +15,8 @@ Api = {
         //});
 
         return callback({
-            status:0,
-            msg:'not follow'
+            status:1,
+            msg:'follow'
         })
 
 
