@@ -47,6 +47,15 @@ var path = {
         './src/assets/js/api.js',
         './src/assets/js/app.js'
     ],
+    followJs:[
+        './src/assets/js/lib/zepto.min.js',
+        //'./src/assets/js/lib/swiper.min.js',
+        './src/assets/js/rem.js',
+        './src/assets/js/map_follow.js',
+        './src/assets/js/common.js',
+        //'./src/assets/js/api.js',
+        './src/assets/js/follow.js'
+    ],
     images:[
         './src/assets/*.{png,jpg,jpeg}',
         './src/assets/*/*.{png,jpg,jpeg}',
@@ -118,6 +127,15 @@ gulp.task('scripts_app',['clean'], function() {
         .pipe(gulp.dest('./src/dist/js'));
 });
 
+gulp.task('scripts_follow',['clean'], function() {
+    return gulp.src(path.followJs)
+        .pipe(concat('all_follow.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('all_follow.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+
 // Concatenate & Minify
 gulp.task("tinypng", function(){
     gulp.src(path.images)
@@ -137,9 +155,10 @@ gulp.task('watch', ['clean'],function() {
     gulp.watch(path.socialJs,['scripts_social']);
     gulp.watch(path.adJs,['scripts_ad']);
     gulp.watch(path.appJs,['scripts_app']);
+    gulp.watch(path.followJs,['scripts_follow']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'css','scripts_social','scripts_ad','scripts_app','browser-sync']);
+gulp.task('default', ['watch', 'css','scripts_social','scripts_ad','scripts_app','scripts_follow','browser-sync']);
 
 
