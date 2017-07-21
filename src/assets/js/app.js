@@ -47,9 +47,11 @@
         * if no stock, disable the button, set opacity to 0.6
         * */
         $('.btn-buy').on('touchstart', function(){
+            var curHmsr = Common.getParameterByName('hmsr');
+            var timestamp=Math.round(new Date().getTime()/1000);
            Api.isStock(function(data){
                if(data.status==1){
-                   window.location.href = '/api/oauth'+window.location.search;
+                   window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
                }else{
                    $('.btn-buy').addClass('disabled');
                }

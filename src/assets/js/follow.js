@@ -11,6 +11,7 @@
         if(item.hmsr == curHmsr){
             qrImg.src = item.src;
         }
+
     });
 
 })();
