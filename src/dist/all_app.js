@@ -349,6 +349,15 @@ Api = {
             });
         }
 
+        /*
+        * If the slideshow has 'showvideo' class, the video popup will show
+        */
+        $('.showvideo').on('touchstart', function(){
+            var tpl = "I'm video";
+            Common.popBox.add('video-popup',tpl);
+        });
+
+
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
             var tpl = '<h3 class="title">活动细则与条款</h3>'+
@@ -367,7 +376,7 @@ Api = {
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
             if(!$('.btn-buy').hasClass('disabled')){
-                window.location.href = '/api/oauth?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
+                window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
             }
         });
 
