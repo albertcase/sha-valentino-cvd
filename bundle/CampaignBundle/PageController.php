@@ -19,7 +19,8 @@ class PageController extends Controller {
 	public function oauthAction()
 	{
 		$param = array();
-		$param['hmsr'] = $this->query->get('hmsr');
+		$request = $this->Request();
+		$param['hmsr'] = $request->query->get('hmsr');
 		$callback_url = BASE_URL.'api/callback'; 
 		$redirect_url = urlencode($this->generateRedirectUrl($callback_url, $param));
 		$api_url = 'http://valentinowechat.samesamechina.com/v1/wx/web/oauth2/authorize';
@@ -33,11 +34,12 @@ class PageController extends Controller {
 	# 授权回调
 	public function callbackAction()
 	{
-		$openid = $this->query->get('openid');
+		$request = $this->Request();
+		$openid = $request->query->get('openid');
 		$param = array(); 
 		if($this->userFollow($openid)) {
 			$src = "https://wechatshop.valentinoworld.com/static/flow.html";
-			$param['src'] = $this->query->get('hmsr');
+			$param['src'] = $request->query->get('hmsr');
 			$param['t'] = time();
 			$param['openid'] = $openid;
 			$redirect_url = $this->generateRedirectUrl($src, $param);
@@ -53,7 +55,7 @@ class PageController extends Controller {
 		$api_url = 'http://valentinowechat.samesamechina.com/api/v1/follow?openid='.$openid;
 		$data = file_get_contents($api_url);
         $data = json_decode($data);
-        if($data->errcode == 0) {
+        if($data->code == 0) {
         	return true;
         } else {
         	return false;
