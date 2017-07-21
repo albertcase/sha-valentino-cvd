@@ -37,15 +37,16 @@ class PageController extends Controller {
 		$request = $this->Request();
 		$openid = $request->query->get('openid');
 		$param = array(); 
+		$hmsr = $request->query->get('hmsr');
 		if($this->userFollow($openid)) {
 			$src = "https://wechatshop.valentinoworld.com/static/flow.html";
-			$param['src'] = $request->query->get('hmsr');
 			$param['t'] = time();
+			$param['src'] = $hmsr;
 			$param['openid'] = $openid;
 			$redirect_url = $this->generateRedirectUrl($src, $param);
 			$this->redirect($redirect_url);
 		} else {
-			$url = $this->generateRedirectUrl(BASE_URL.'follow.html', array('src' => $src));
+			$url = $this->generateRedirectUrl(BASE_URL.'follow.html', array('hmsr' => $hmsr);
 			$this->redirect($url);
 		}
 	}
