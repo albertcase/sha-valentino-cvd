@@ -42,12 +42,19 @@
         });
 
         /*
-         * for buy button
-         * if follow, join all parameter and redirect
-         * if not, follow the qrcode first
+         * For buy button
+         * if has stock, generate redirect url
+         * if not stock, disabled the button
          * */
         $('.btn-buy').on('touchstart', function(){
-            self.generateRedirectUrl();
+            Api.isStock(function(data){
+                if(data.status==1){
+                    self.generateRedirectUrl();
+                }else{
+                    $('.btn-buy').addClass('disabled');
+                }
+            });
+
         });
 
         //    btn-follow
@@ -82,8 +89,9 @@
         console.log('generateRedirectUrl');
         var curHmsr = Common.getParameterByName('hmsr');
         var timestamp=Math.round(new Date().getTime()/1000);
-        var redirectUrl = ''+'?hmsr='+curHmsr+'&t='+timestamp;
-        window.location.href = redirectUrl;
+        var redirectUrl = encodeURI('https://wechatshop.valentinoworld.com/static/flow.html?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base');
+        var fullUrl = 'http://valentinowechat.samesamechina.com/v1/wx/web/oauth2/authorize?redirect_uri='+redirectUrl;
+        window.location.href = fullUrl;
     };
 
     // the follow qrcode popup

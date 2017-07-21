@@ -63,6 +63,31 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
     }
 
 })(document, window);
+/*All the api collection*/
+Api = {
+    //is fill form
+    isStock:function(callback){
+        //Common.msgBox.add('loading...');
+        //$.ajax({
+        //    url:'/api/stock',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        Common.msgBox.remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
+
+        return callback({
+            status:1,
+            msg:'follow'
+        })
+
+    },
+
+
+};
 /*
 * This file listed url parameter(hmsr) map the follow qrcode image src
 * */
@@ -285,12 +310,19 @@ $(document).ready(function(){
         });
 
         /*
-         * for buy button
-         * if follow, join all parameter and redirect
-         * if not, follow the qrcode first
+         * For buy button
+         * if has stock, generate redirect url
+         * if not stock, disabled the button
          * */
         $('.btn-buy').on('touchstart', function(){
-            self.generateRedirectUrl();
+            Api.isStock(function(data){
+                if(data.status==1){
+                    self.generateRedirectUrl();
+                }else{
+                    $('.btn-buy').addClass('disabled');
+                }
+            });
+
         });
 
         //    btn-follow
@@ -325,8 +357,10 @@ $(document).ready(function(){
         console.log('generateRedirectUrl');
         var curHmsr = Common.getParameterByName('hmsr');
         var timestamp=Math.round(new Date().getTime()/1000);
-        var redirectUrl = ''+'?hmsr='+curHmsr+'&t='+timestamp;
-        window.location.href = redirectUrl;
+        var redirectUrl = encodeURI('https://wechatshop.valentinoworld.com/static/flow.html?src='+curHmsr+'&t='+timestamp+'&scope=snsapi_base');
+        var fullUrl = 'http://valentinowechat.samesamechina.com/v1/wx/web/oauth2/authorize?redirect_uri='+redirectUrl;
+        window.location.href = fullUrl;
+        
     };
 
     // the follow qrcode popup
