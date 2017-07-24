@@ -410,6 +410,20 @@ body{
     @include transform(translateY(-50%));
   }
 }
+.showvideo{
+  &:after{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    content: '';
+    display: block;
+    @include size(1.38rem,1.30rem);
+    @include transform(translate(-50%,-50%));
+    z-index: 10;
+    background: url("../images/btn-play.png") no-repeat;
+    background-size: contain;
+  }
+}
 
 /*
 * For alert-pop

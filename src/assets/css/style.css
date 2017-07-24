@@ -1640,6 +1640,23 @@ body {
   transform: translateY(-50%);
 }
 
+.showvideo:after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  content: '';
+  display: block;
+  width: 1.38rem;
+  height: 1.3rem;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background: url("../images/btn-play.png") no-repeat;
+  background-size: contain;
+}
+
 /*
 * For alert-pop
 */

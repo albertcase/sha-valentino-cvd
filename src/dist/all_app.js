@@ -221,7 +221,6 @@ var mapFollow = [
         channel: 34,
         hmsr:'app_share',
         src: '/src/dist/images/qrcode-follow/34sharefollow.png'
-        
     },
 
 ]
@@ -424,8 +423,16 @@ Api = {
         * If the slideshow has 'showvideo' class, the video popup will show
         */
         $('.showvideo').on('click', function(){
-            var tpl = '<video autoplay controls><source src="/src/media/video.mp4" type="video/mp4"></video>';
+            var video = document.createElement('video');
+            video.src = '/src/media/video.mp4';
+            video.autoPlay = true;
+            video.poster = '/src/dist/images/poster.jpg';
+            video.controls = true;
+            var tpl = '';
             Common.popBox.add('video-popup',tpl);
+            $('#video-popup .pop-content')[0].appendChild(video);
+            video.load();
+            video.play();
         });
 
 
