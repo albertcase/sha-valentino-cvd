@@ -72,7 +72,6 @@ var mapFollow = [
         hmsr:'default',
         src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
-    
     {
         channel: 19,
         hmsr:'social_weibo',
@@ -90,7 +89,7 @@ var mapFollow = [
     },
     {
         channel: 22,
-        hmsr:'app_generalfollow',
+        hmsr:'ad_generalfollow',
         src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
     {
@@ -140,7 +139,7 @@ var mapFollow = [
     },
     {
         channel: 30,
-        hmsr:'app_keyword',
+        hmsr:'ad_keyword',
         src: '/src/dist/images/qrcode-follow/30keywordsfollow.png'
     },
     {
@@ -222,6 +221,12 @@ var mapFollow = [
         channel: 34,
         hmsr:'app_share',
         src: '/src/dist/images/qrcode-follow/34sharefollow.png'
+    },
+    {
+        
+        channel: 29,
+        hmsr:'ad_menu',
+        src: '/src/dist/images/qrcode-follow/29menufollow.png'
     },
 
 ]
