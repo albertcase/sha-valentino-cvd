@@ -48,7 +48,7 @@ $(document).ready(function(){
         title1: 'Rockstud Spike手袋七夕限定款 全球独家限量发售',
         des: '真爱誓言 精致浪漫',
         link: 'http://cvdvalentino.samesamechina.com/ad.html?hmsr=app_share',
-        img: window.location.origin+'/src/dist/images/logo.png'
+        img: window.location.origin+'/src/dist/images/share.jpg'
     },function(){
         console.log('sharesuccess');
     });
