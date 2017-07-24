@@ -75,7 +75,15 @@ class PageController extends Controller {
 	}
 
 	# api 验证是否有库存
-	private function checkStock(){
-		return true;
+	private function checkStock() 
+	{
+		$api_url = 'https://wechatshop.valentinoworld.com/getProductAvailability/1';
+		$data = file_get_contents($api_url);
+        $data = json_decode($data);
+        $count = $data->qty - $data->orderedqty;
+        if($count <= 0) {
+        	return false;
+        } 
+        return true;
 	}
 }
