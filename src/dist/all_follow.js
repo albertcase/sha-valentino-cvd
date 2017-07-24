@@ -51,7 +51,7 @@ var mapFollow = [
     {
         channel: 'default',
         hmsr:'default',
-        src: '/src/dist/images/qrcode-follow/default.png'
+        src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
     {
         channel: 19,
@@ -202,7 +202,6 @@ var mapFollow = [
         channel: 34,
         hmsr:'app_share',
         src: '/src/dist/images/qrcode-follow/34sharefollow.png'
-        
     },
 
 ]

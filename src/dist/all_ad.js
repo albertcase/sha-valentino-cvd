@@ -95,8 +95,9 @@ var mapFollow = [
     {
         channel: 'default',
         hmsr:'default',
-        src: '/src/dist/images/qrcode-follow/default.png'
+        src: '/src/dist/images/qrcode-follow/22generalfollow.png'
     },
+    
     {
         channel: 19,
         hmsr:'social_weibo',
@@ -466,7 +467,6 @@ $(document).ready(function(){
             $('#video-popup .pop-content')[0].appendChild(video);
             video.load();
             video.play();
-
         });
 
     };
