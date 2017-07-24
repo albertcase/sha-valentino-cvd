@@ -488,7 +488,7 @@ function weixinshare(obj,successCallBack){
 
 $(document).ready(function(){
     weixinshare({
-        title1: 'title',
+        title1: 'Rockstud Spike手袋七夕限定款 全球独家限量发售',
         des: 'title',
         link: 'http://cvdvalentino.samesamechina.com/ad.html?hmsr=app_share',
         img: window.location.origin+'/src/dist/images/logo.png'
