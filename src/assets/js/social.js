@@ -41,17 +41,6 @@
             Common.popBox.add('pop-rules',tpl);
         });
 
-        // for buy button
-        $('.btn-buy').on('touchstart click', function(){
-            //go second page and show qrcode img
-            if(document.getElementById('isagree').checked){
-                Common.gotoPin(1);
-                self.generateQrcode();
-            }else{
-                Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
-            }
-        });
-
         /*
          * hide default play video button, add custom play button, if play, the button hide,if pause, the button show
          */
@@ -66,6 +55,31 @@
             $('.btn-play').removeClass('hide');
 
         })
+
+        /*
+         * Imitate the checkbox function, default value is false(not selected)
+         * */
+        var isagree = false;
+        $('#isagree').on('touchstart', function(){
+            if(isagree){
+                isagree = false;
+                $('#isagree').removeClass('yes');
+            }else{
+                isagree = true;
+                $('#isagree').addClass('yes');
+            }
+        });
+
+        // for buy button
+        $('.btn-buy').on('touchstart click', function(){
+            //go second page and show qrcode img
+            if(isagree){
+                Common.gotoPin(1);
+                self.generateQrcode();
+            }else{
+                Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+            }
+        });
     };
 
     // generate qrcode image

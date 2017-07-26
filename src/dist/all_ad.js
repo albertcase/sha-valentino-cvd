@@ -441,21 +441,6 @@ $(document).ready(function(){
             Common.popBox.add('pop-rules',tpl);
         });
 
-        /*
-         * For buy button
-         * if has stock, generate redirect url
-         * if not stock, disabled the button
-         * */
-        $('.btn-buy').on('touchstart', function(){
-            if(!$('.btn-buy').hasClass('disabled')){
-                if(document.getElementById('isagree').checked){
-                    self.generateRedirectUrl();
-                }else{
-                    Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
-                }
-            }
-
-        });
 
         //    btn-follow
         $('.btn-follow').on('touchstart', function(){
@@ -476,8 +461,37 @@ $(document).ready(function(){
         })
         video.addEventListener('pause', function(){
             $('.btn-play').removeClass('hide');
-
         })
+
+        /*
+         * Imitate the checkbox function, default value is false(not selected)
+         * */
+        var isagree = false;
+        $('#isagree').on('touchstart', function(){
+            if(isagree){
+                isagree = false;
+                $('#isagree').removeClass('yes');
+            }else{
+                isagree = true;
+                $('#isagree').addClass('yes');
+            }
+        });
+
+        /*
+         * For buy button
+         * if has stock, generate redirect url
+         * if not stock, disabled the button
+         * */
+        $('.btn-buy').on('touchstart', function(){
+            if(!$('.btn-buy').hasClass('disabled')){
+                if(isagree){
+                    self.generateRedirectUrl();
+                }else{
+                    Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+                }
+            }
+
+        });
 
     };
 

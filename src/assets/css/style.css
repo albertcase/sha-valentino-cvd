@@ -1442,6 +1442,7 @@ body {
 }
 
 .rule-tips {
+  position: relative;
   margin: 0.2rem 0;
   text-align: center;
   font-size: 0.2rem;
@@ -1449,6 +1450,23 @@ body {
 }
 .rule-tips .show-rule {
   text-decoration: underline;
+}
+.rule-tips label {
+  display: inline-block;
+  vertical-align: middle;
+}
+.rule-tips #isagree {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.2rem;
+  height: 0.2rem;
+  border: #343434 1px solid;
+  box-sizing: border-box;
+}
+.rule-tips #isagree.yes {
+  background: url("../images/isagree-yes.png") no-repeat;
+  background-size: 100%;
+  background-position: 1px -1px;
 }
 
 .buttons {

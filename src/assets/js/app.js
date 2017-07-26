@@ -56,6 +56,21 @@
         })
 
 
+        /*
+        * Imitate the checkbox function, default value is false(not selected)
+        * */
+        var isagree = false;
+        $('#isagree').on('touchstart', function(){
+            if(isagree){
+                isagree = false;
+                $('#isagree').removeClass('yes');
+            }else{
+                isagree = true;
+                $('#isagree').addClass('yes');
+            }
+        });
+
+
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
             var tpl = '<h3 class="title">活动细则与条款</h3>'+
@@ -74,7 +89,7 @@
             var curHmsr = Common.getParameterByName('hmsr');
             var timestamp=Math.round(new Date().getTime()/1000);
             if(!$('.btn-buy').hasClass('disabled')){
-                if(document.getElementById('isagree').checked){
+                if(isagree){
                     window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
                 }else{
                     Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
