@@ -13,7 +13,6 @@ Api = {
                 //status=1 有库存
             }
         });
-
         //return callback({
         //    status:1,
         //    msg:'follow'

@@ -106,7 +106,7 @@ body{
 //  width: 100%;
 //}
 .logo{
-  margin: 0 auto 0.5rem;
+  margin: 0 auto 0.4rem;
   width: 3.31rem;
 }
 .showonpc{
@@ -180,7 +180,34 @@ body{
 .panel{
   width: 6.2rem;
   margin: 0.3rem auto 0;
+  &.sellout{
+    .product-des{
+      display: none;
+    }
+    .rule-tips{
+      display: none;
+    }
+    .btn-buy{
+      display: none;
+    }
+    .sellout-des{
+      display: block;
+    }
+  }
 }
+
+//for sellout-des
+.sellout-des{
+  display: none;
+  margin: 0.9rem 0;
+  text-align: center;
+  font-size: 0.26rem;
+  color: #888;
+  .des-1{
+    margin-bottom: 0.3rem;
+  }
+}
+
 //for product-block
 .product-block{
   text-align: center;
@@ -383,6 +410,7 @@ body{
   }
 
 }
+/*====End pc====*/
 
 /*
 * for qrcode-popup

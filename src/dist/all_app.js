@@ -401,6 +401,7 @@ Api = {
         Api.isStock(function(data){
             if(!(data.status == 1)){
                 $('.btn-buy').addClass('disabled');
+                $('.panel').addClass('sellout');
             }
         });
     };
