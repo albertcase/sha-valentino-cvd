@@ -264,6 +264,9 @@ body{
 
 .buttons{
   text-align: center;
+  &.buttons-1{
+    margin-top: 0.3rem;
+  }
   .btn{
     display: inline-block;
     width: 47%;

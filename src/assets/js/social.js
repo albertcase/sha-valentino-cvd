@@ -63,30 +63,11 @@
 
         })
 
-        /*
-         * Imitate the checkbox function, default value is false(not selected)
-         * */
-        var isagree = false;
-        $('#isagree').on('touchstart', function(){
-            if(isagree){
-                isagree = false;
-                $('#isagree').removeClass('yes');
-            }else{
-                isagree = true;
-                $('#isagree').addClass('yes');
-            }
-        });
-
         // for buy button
         $('.btn-buy').on('touchstart click', function(){
             //go second page and show qrcode img
-            if(isagree){
-                Common.gotoPin(1);
-                self.generateQrcode();
-            }else{
-                var tpl = '<h3 class="title">提示</h3><p class="des">请阅读并勾选“细则与条款”</p><div class="btn-close btn-close-ok">OK</div>';
-                Common.popBox.add('alert-pop',tpl);
-            }
+            Common.gotoPin(1);
+            self.generateQrcode();
         });
     };
 

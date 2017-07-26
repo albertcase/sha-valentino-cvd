@@ -1495,6 +1495,9 @@ body {
 .buttons {
   text-align: center;
 }
+.buttons.buttons-1 {
+  margin-top: 0.3rem;
+}
 .buttons .btn {
   display: inline-block;
   width: 47%;
