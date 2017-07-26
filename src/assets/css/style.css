@@ -1355,10 +1355,14 @@ body {
   background: #333;
 }
 
+.swiper-pannel {
+  width: 7.5rem;
+  height: 4.22rem;
+}
+
 .swiper-container {
   width: 7.5rem;
-  height: 3.64rem;
-  padding-bottom: 0.5rem;
+  height: 4.22rem;
 }
 
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
@@ -1385,6 +1389,9 @@ body {
   transform: rotate(225deg);
 }
 
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 0;
+}
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-custom .swiper-pagination-bullet, .swiper-pagination-fraction .swiper-pagination-bullet {
   width: 0.15rem;
   height: 0.15rem;
@@ -1399,9 +1406,13 @@ body {
   border: #333333 1px solid;
 }
 
+.swiper-slide video {
+  width: 100%;
+}
+
 .panel {
   width: 6.2rem;
-  margin: 0 auto;
+  margin: 0.3rem auto 0;
 }
 
 .product-block {
@@ -1411,6 +1422,7 @@ body {
   margin-bottom: 0.2rem;
   font-size: 0.26rem;
   color: #333;
+  line-height: 1.5;
 }
 .product-block .subname {
   display: block;
@@ -1430,7 +1442,7 @@ body {
 }
 
 .rule-tips {
-  margin: 0.35rem 0;
+  margin: 0.2rem 0;
   text-align: center;
   font-size: 0.2rem;
   color: #333;
@@ -1640,7 +1652,7 @@ body {
   transform: translateY(-50%);
 }
 
-.showvideo:after {
+.showvideo .btn-play {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1655,6 +1667,14 @@ body {
   z-index: 10;
   background: url("../images/btn-play.png") no-repeat;
   background-size: contain;
+}
+
+/* Old shadow dom for play button */
+/* New shadow dom for play button */
+/* This one works */
+*::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
 }
 
 /*

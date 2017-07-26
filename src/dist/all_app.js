@@ -223,7 +223,6 @@ var mapFollow = [
         src: '/src/dist/images/qrcode-follow/34sharefollow.png'
     },
     {
-        
         channel: 29,
         hmsr:'ad_menu',
         src: '/src/dist/images/qrcode-follow/29menufollow.png'
@@ -426,20 +425,19 @@ Api = {
         }
 
         /*
-        * If the slideshow has 'showvideo' class, the video popup will show
-        */
-        $('.showvideo').on('click', function(){
-            var video = document.createElement('video');
-            video.src = '/src/media/video.mp4';
-            video.autoPlay = true;
-            video.poster = '/src/dist/images/poster.jpg';
-            video.controls = true;
-            var tpl = '';
-            Common.popBox.add('video-popup',tpl);
-            $('#video-popup .pop-content')[0].appendChild(video);
-            video.load();
+         * hide default play video button, add custom play button, if play, the button hide,if pause, the button show
+         */
+        var video = document.getElementById('myvideo');
+        $('.btn-play').on('click', function(){
             video.play();
         });
+        video.addEventListener('play', function(){
+            $('.btn-play').addClass('hide');
+        })
+        video.addEventListener('pause', function(){
+            $('.btn-play').removeClass('hide');
+
+        })
 
 
         //Show rule pop

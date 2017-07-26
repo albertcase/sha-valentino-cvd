@@ -248,7 +248,6 @@ var mapFollow = [
         src: '/src/dist/images/qrcode-follow/34sharefollow.png'
     },
     {
-        
         channel: 29,
         hmsr:'ad_menu',
         src: '/src/dist/images/qrcode-follow/29menufollow.png'
@@ -423,6 +422,13 @@ $(document).ready(function(){
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
             });
+            mySwiper.on('slideChangeStart', function(e){
+                if(e.activeIndex == 3){  //if current slide is video slide
+                   $('.swiper-pagination').addClass('hide');
+                }else{
+                    $('.swiper-pagination').removeClass('hide');
+                }
+            });
         }
 
         //Show rule pop
@@ -459,20 +465,19 @@ $(document).ready(function(){
         });
 
         /*
-         * If the slideshow has 'showvideo' class, the video popup will show
+         * hide default play video button, add custom play button, if play, the button hide,if pause, the button show
          */
-        $('.showvideo').on('click', function(){
-            var video = document.createElement('video');
-            video.src = '/src/media/video.mp4';
-            video.autoPlay = true;
-            video.poster = '/src/dist/images/poster.jpg';
-            video.controls = true;
-            var tpl = '';
-            Common.popBox.add('video-popup',tpl);
-            $('#video-popup .pop-content')[0].appendChild(video);
-            video.load();
+        var video = document.getElementById('myvideo');
+        $('.btn-play').on('click', function(){
             video.play();
         });
+        video.addEventListener('play', function(){
+            $('.btn-play').addClass('hide');
+        })
+        video.addEventListener('pause', function(){
+            $('.btn-play').removeClass('hide');
+
+        })
 
     };
 
