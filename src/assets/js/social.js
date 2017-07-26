@@ -29,6 +29,13 @@
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
             });
+            mySwiper.on('slideChangeStart', function(e){
+                if(e.activeIndex == 3){  //if current slide is video slide
+                    $('.swiper-pagination').addClass('hide');
+                }else{
+                    $('.swiper-pagination').removeClass('hide');
+                }
+            });
         }
 
         //Show rule pop
