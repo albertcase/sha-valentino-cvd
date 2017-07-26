@@ -78,7 +78,6 @@ Api = {
                 //status=1 有库存
             }
         });
-
         //return callback({
         //    status:1,
         //    msg:'follow'
@@ -401,7 +400,7 @@ $(document).ready(function(){
         Api.isStock(function(data){
             if(!(data.status == 1)){
                 $('.btn-buy').addClass('disabled');
-                $('.panel').addClass('sellout');
+                //$('.panel').addClass('sellout');
             }
         });
     };
