@@ -523,8 +523,41 @@ body{
 * For alert-pop
 */
 #alert-pop{
+  background: rgba(0,0,0,.5);
+  .inner{
+    box-shadow: 0 0 10px #333;
+  }
+  .title{
+    font-weight: bold;
+    font-size: 0.32rem;
+    color: #000;
+  }
   .pop-content{
-    padding: 0.5rem;
+    padding: 0;
     text-align: center;
+  }
+  .des{
+    font-size: 0.27rem;
+    margin: 0.8rem 0;
+  }
+  .btn-close{
+    display: none;
+  }
+  .btn-close-ok{
+    display: block;
+    position: relative;
+    @include size(2.74rem,0.6rem);
+    line-height: 0.6rem;
+    text-indent:0;
+    text-align: center;
+    margin: 0 auto 0.5rem;
+    background: #373737;
+    color: #fff;
+    font-size: 0.26rem;
+    font-weight: bold;
+    &:before,
+    &:after{
+      display: none;
+    }
   }
 }

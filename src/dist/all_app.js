@@ -483,7 +483,8 @@ Api = {
                 if(isagree){
                     window.location.href = '/api/oauth?hmsr='+curHmsr+'&t='+timestamp+'&scope=snsapi_base';
                 }else{
-                    Common.popBox.add('alert-pop','请阅读”细则与条款“，并勾选。');
+                    var tpl = '<h3 class="title">提示</h3><p class="des">请阅读并勾选“细则与条款”</p><div class="btn-close btn-close-ok">OK</div>';
+                    Common.popBox.add('alert-pop',tpl);
                 }
             }
         });

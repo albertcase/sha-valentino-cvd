@@ -1722,7 +1722,42 @@ body {
 /*
 * For alert-pop
 */
+#alert-pop {
+  background: rgba(0, 0, 0, 0.5);
+}
+#alert-pop .inner {
+  box-shadow: 0 0 10px #333;
+}
+#alert-pop .title {
+  font-weight: bold;
+  font-size: 0.32rem;
+  color: #000;
+}
 #alert-pop .pop-content {
-  padding: 0.5rem;
+  padding: 0;
   text-align: center;
+}
+#alert-pop .des {
+  font-size: 0.27rem;
+  margin: 0.8rem 0;
+}
+#alert-pop .btn-close {
+  display: none;
+}
+#alert-pop .btn-close-ok {
+  display: block;
+  position: relative;
+  width: 2.74rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  text-indent: 0;
+  text-align: center;
+  margin: 0 auto 0.5rem;
+  background: #373737;
+  color: #fff;
+  font-size: 0.26rem;
+  font-weight: bold;
+}
+#alert-pop .btn-close-ok:before, #alert-pop .btn-close-ok:after {
+  display: none;
 }
