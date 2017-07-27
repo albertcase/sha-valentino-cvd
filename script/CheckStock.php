@@ -1,7 +1,8 @@
 <?php
-require_once "./Core/bootstrap.php";
-include_once "./config/config.php";
-include_once "./config/router.php";
+define('SITE_URL', dirname(dirname(__FILE__)));
+require_once SITE_URL . '/Core/bootstrap.php';
+include_once SITE_URL . '/config/config.php';
+include_once SITE_URL . '/config/router.php';
 
 $editpage = array('ad.html', 'app.html', 'social.html');
 $page = 'test-sellout.html';
@@ -38,8 +39,9 @@ class Stock
 	{
 		if($this->checkStock()){
 			foreach ($this->editpage as $k => $v) {
-				$contents = file_get_contents($this->page);
-				file_put_contents($v, $contents);
+				$contents = file_get_contents(SITE_URL . '/' . $this->page);
+				var_dump(SITE_URL . '/' . $v);
+				file_put_contents(SITE_URL . '/' . $v, $contents);
 			}
 		}	
 	}
