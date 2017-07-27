@@ -251,7 +251,7 @@ body{
   #isagree{
     display: inline-block;
     vertical-align: middle;
-    @include size(0.2rem,0.2rem);
+    @include size(0.3rem,0.3rem);
     border: #343434 1px solid;
     box-sizing: border-box;
     &.yes{
