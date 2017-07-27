@@ -1466,9 +1466,9 @@ body {
 
 .rule-tips {
   position: relative;
-  margin: 0.2rem 0;
+  margin: 0.3rem 0;
   text-align: center;
-  font-size: 0.2rem;
+  font-size: 0.22rem;
   color: #333;
 }
 .rule-tips .show-rule {
@@ -1481,8 +1481,8 @@ body {
 .rule-tips #isagree {
   display: inline-block;
   vertical-align: middle;
-  width: 0.2rem;
-  height: 0.2rem;
+  width: 0.3rem;
+  height: 0.3rem;
   border: #343434 1px solid;
   box-sizing: border-box;
 }
@@ -1717,11 +1717,6 @@ body {
 /* Old shadow dom for play button */
 /* New shadow dom for play button */
 /* This one works */
-*::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
-
 /*
 * For alert-pop
 */

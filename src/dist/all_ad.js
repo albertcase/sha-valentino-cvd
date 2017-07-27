@@ -413,7 +413,7 @@ $(document).ready(function(){
         if(navigator.userAgent.toLocaleLowerCase().indexOf('mobile')>-1){
             var mySwiper = new Swiper ('.swiper-container', {
                 // Optional parameters
-                loop: false,
+                loop: true,
 
                 // If we need pagination
                 pagination: '.swiper-pagination',
@@ -423,7 +423,7 @@ $(document).ready(function(){
                 prevButton: '.swiper-button-prev',
             });
             mySwiper.on('slideChangeStart', function(e){
-                if(e.activeIndex == 3){  //if current slide is video slide
+                if(e.activeIndex == 4){  //if current slide is video slide
                    $('.swiper-pagination').addClass('hide');
                 }else{
                     $('.swiper-pagination').removeClass('hide');
@@ -452,16 +452,18 @@ $(document).ready(function(){
         /*
          * hide default play video button, add custom play button, if play, the button hide,if pause, the button show
          */
-        var video = document.getElementById('myvideo');
-        $('.btn-play').on('click', function(){
-            video.play();
-        });
-        video.addEventListener('play', function(){
+        if(navigator.userAgent.indexOf('iPhone')>-1){
+            //console.log('iPhone');
             $('.btn-play').addClass('hide');
-        })
-        video.addEventListener('pause', function(){
-            $('.btn-play').removeClass('hide');
-        })
+        }
+        //var video = document.getElementById('myvideo');
+        $('.btn-play').on('click', function(){
+
+            //not iphone
+            if(!(navigator.userAgent.indexOf('iPhone')>-1)){
+                $(this).parent().find('video')[0].play();
+            }
+        });
 
         /*
          * Imitate the checkbox function, default value is false(not selected)

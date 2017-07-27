@@ -237,9 +237,9 @@ body{
 
 .rule-tips{
   position: relative;
-  margin: 0.2rem 0;
+  margin: 0.3rem 0;
   text-align: center;
-  font-size: 0.2rem;
+  font-size: 0.22rem;
   color: #333;
   .show-rule{
     text-decoration: underline;
@@ -251,7 +251,7 @@ body{
   #isagree{
     display: inline-block;
     vertical-align: middle;
-    @include size(0.2rem,0.2rem);
+    @include size(0.3rem,0.3rem);
     border: #343434 1px solid;
     box-sizing: border-box;
     &.yes{
@@ -517,10 +517,12 @@ body{
 
 /* This one works */
 
-*::-webkit-media-controls-start-playback-button {
-  display: none!important;
-  -webkit-appearance: none;
-}
+//*::-webkit-media-controls-start-playback-button {
+//  display: none!important;
+//  -webkit-appearance: none;
+//}
+
+
 
 /*
 * For alert-pop
