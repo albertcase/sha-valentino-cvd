@@ -1471,6 +1471,10 @@ body {
   font-size: 0.22rem;
   color: #333;
 }
+.rule-tips .main-tip {
+  display: inline-block;
+  position: relative;
+}
 .rule-tips .show-rule {
   text-decoration: underline;
 }
@@ -1479,17 +1483,24 @@ body {
   vertical-align: middle;
 }
 .rule-tips #isagree {
-  display: inline-block;
-  vertical-align: middle;
+  padding: 0.2rem 0.4rem;
+  position: absolute;
+  left: -0.9rem;
+  top: -0.2rem;
+  z-index: 2;
+  box-sizing: content-box;
+}
+.rule-tips #isagree.yes {
+  background: url("../images/isagree-yes.png") no-repeat;
+  background-size: 0.36rem 0.36rem;
+  background-position: 0.44rem 0.15rem;
+}
+.rule-tips #isagree strong {
+  display: block;
   width: 0.36rem;
   height: 0.36rem;
   border: #343434 1px solid;
   box-sizing: border-box;
-}
-.rule-tips #isagree.yes {
-  background: url("../images/isagree-yes.png") no-repeat;
-  background-size: 100%;
-  background-position: 1px -1px;
 }
 
 .buttons {

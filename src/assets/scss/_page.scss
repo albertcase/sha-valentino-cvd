@@ -241,6 +241,10 @@ body{
   text-align: center;
   font-size: 0.22rem;
   color: #333;
+  .main-tip{
+    display: inline-block;
+    position: relative;
+  }
   .show-rule{
     text-decoration: underline;
   }
@@ -249,15 +253,22 @@ body{
     vertical-align: middle;
   }
   #isagree{
-    display: inline-block;
-    vertical-align: middle;
-    @include size(0.36rem,0.36rem);
-    border: #343434 1px solid;
-    box-sizing: border-box;
+    padding: 0.2rem 0.4rem;
+    position: absolute;
+    left: -0.9rem;
+    top: -0.2rem;
+    z-index: 2;
+    box-sizing: content-box;
     &.yes{
       background: url("../images/isagree-yes.png") no-repeat;
-      background-size: 100%;
-      background-position: 1px -1px;
+      background-size: 0.36rem 0.36rem;
+      background-position: 0.44rem 0.15rem;
+    }
+    strong{
+      display: block;
+      @include size(0.36rem,0.36rem);
+      border: #343434 1px solid;
+      box-sizing: border-box;
     }
   }
 }

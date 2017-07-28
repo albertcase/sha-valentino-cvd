@@ -467,7 +467,6 @@ Api = {
         $('.show-rule').on('touchstart', function(){
             var tpl = '<h3 class="title">活动细则与条款</h3><div class="rule-content">'+$('.rule-text').html()+'</div>';
             Common.popBox.add('pop-rules',tpl);
-            
         });
 
         /*
