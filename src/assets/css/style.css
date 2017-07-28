@@ -1481,8 +1481,8 @@ body {
 .rule-tips #isagree {
   display: inline-block;
   vertical-align: middle;
-  width: 0.3rem;
-  height: 0.3rem;
+  width: 0.36rem;
+  height: 0.36rem;
   border: #343434 1px solid;
   box-sizing: border-box;
 }
@@ -1543,12 +1543,29 @@ body {
   width: 86vw;
 }
 #pop-rules .rule-content {
-  padding: 0.35rem 0.5rem;
+  padding: .35rem .5rem;
+  height: 60vh;
+  overflow: auto;
+  box-sizing: border-box;
 }
 #pop-rules .rule-content p {
   font-size: 0.22rem;
   line-height: 1.6;
   margin-bottom: 0.4rem;
+}
+#pop-rules .rule-content h3 {
+  color: #333;
+  font-size: 0.22rem;
+  font-weight: bold;
+}
+#pop-rules .rule-content h4 {
+  font-size: 0.22rem;
+  color: #333;
+  font-weight: normal;
+}
+#pop-rules .rule-content p {
+  font-size: 0.2rem;
+  color: #333;
 }
 
 .page-pc {

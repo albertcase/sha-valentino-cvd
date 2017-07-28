@@ -433,12 +433,10 @@ $(document).ready(function(){
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
-            var tpl = '<h3 class="title">活动细则与条款</h3>'+
-                '<div class="rule-content"><p>配送与提货<br>您可在订单中选择快递配送或到店自取的方式获取商品。</p>'+
-                '<p>快 递<br>配送费用: 免费<br>配送时间: 免费配送服务的运送时间为发货日起1-5天。</p>'+
-                '<p>寄货目的地与运费<br>在此网站的订单只能配送至中国大陆地区。</p>'+
-                '<p>到店自取<br>线上支付完成后，前往所选择的线下店铺提取商品，提取时须出示本人身份证件及订单确认码。线下店铺将电话确认相关取货信息，如需他人代理提取，需提前告知店铺代理人姓名及身份证件信息。</p></div>';
+            var tpl = '<h3 class="title">活动细则与条款</h3><div class="rule-content">'+$('.rule-text').html()+'</div>';
             Common.popBox.add('pop-rules',tpl);
+
+            
         });
 
 
