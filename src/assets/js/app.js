@@ -56,7 +56,7 @@
             $('.btn-play').addClass('hide');
         }
         //var video = document.getElementById('myvideo');
-        $('.btn-play').on('click', function(){
+        $('.showvideo').on('click', '.btn-play', function(){
 
             //not iphone
             if(!(navigator.userAgent.indexOf('iPhone')>-1)){
@@ -103,11 +103,31 @@
             }
         });
 
-    //    btn-follow
+        /*
+        * For iphone, we use default video tag and action
+        * For others, main is for andriod, we will fix video z-index hight bug with rewrite the video html,
+        * but when close popup in video area, the video will play, so add a overlay and then remove when close the popup
+        * */
         $('.btn-follow').on('touchstart', function(){
             //go second page and show qrcode img
             //Common.gotoPin(1);
+            var videoHtml = '<video class="myvideo" poster="/src/dist/images/poster.jpg"><br><source src="/src/media/video.mp4"><br></video><div class="btn-play"></div><div class="video-overlay"></div>';
+            if(!(navigator.userAgent.indexOf('iPhone')>-1)){
+                $('.showvideo').html(videoHtml);
+            }
             self.qrcodePopup();
+        });
+
+        $('body').on('touchstart', '#qrcode-popup', function(e){
+            //console.log($('#this'));
+            if(e.target.className.indexOf('popup') > -1 || e.target.className.indexOf('btn-close') > -1){
+                //$('.popup').remove();
+                $('#qrcode-popup').remove();
+                var aaa = setTimeout(function(){
+                    $('.video-overlay').remove();
+                    clearTimeout(aaa);
+                },200);
+            }
         });
 
     };

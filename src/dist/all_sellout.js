@@ -349,6 +349,10 @@ $(document).ready(function(){
 	$('body').on('touchstart',function(e){
         if(e.target.className.indexOf('popup') > -1 || e.target.className.indexOf('btn-close') > -1){
             $('.popup').remove();
+            console.log(e);
+            if(e.target=='qrcode-popup'){
+
+            }
         }
 	});
 
