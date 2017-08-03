@@ -50,6 +50,7 @@
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'showRuleOnAd']);
             var tpl = '<h3 class="title">活动细则与条款</h3><div class="rule-content">'+$('.rule-text').html()+'</div>';
             Common.popBox.add('pop-rules',tpl);
         });
@@ -61,6 +62,7 @@
          * but when close popup in video area, the video will play, so add a overlay and then remove when close the popup
          * */
         $('.btn-follow').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'qrcode', 'show', 'showQrcodePopOnAd']);
             //go second page and show qrcode img
             //Common.gotoPin(1);
             var videoHtml = '<video class="myvideo" poster="/src/dist/images/poster.jpg"><br><source src="/src/media/video.mp4"><br></video><div class="btn-play"></div><div class="video-overlay"></div>';
@@ -91,11 +93,16 @@
         }
         //var video = document.getElementById('myvideo');
         $('.showvideo').on('click', '.btn-play', function(){
-
             //not iphone
             if(!(navigator.userAgent.indexOf('iPhone')>-1)){
                 $(this).parent().find('video')[0].play();
             }
+        });
+        $('.myvideo')[0].addEventListener('play', function(){
+            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
+        });
+        $('.myvideo')[1].addEventListener('play', function(){
+            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
         });
 
         /*
@@ -118,6 +125,7 @@
          * if not stock, disabled the button
          * */
         $('.btn-buy').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'buyButtonOnAd']);
             if(!$('.btn-buy').hasClass('disabled')){
                 if(isagree){
                     self.generateRedirectUrl();

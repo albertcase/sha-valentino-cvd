@@ -42,6 +42,7 @@
 
         //Show rule pop
         $('.show-rule').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'showRuleOnSocial']);
             var tpl = '<h3 class="title">活动细则与条款</h3><div class="rule-content">'+$('.rule-text').html()+'</div>';
             Common.popBox.add('pop-rules',tpl);
         });
@@ -55,11 +56,17 @@
         }
         //var video = document.getElementById('myvideo');
         $('.btn-play').on('click', function(){
-
+            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnSocial']);
             //not iphone
             if(!(navigator.userAgent.indexOf('iPhone')>-1)){
                 $(this).parent().find('video')[0].play();
             }
+        });
+        $('.myvideo')[0].addEventListener('play', function(){
+            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnSocial']);
+        });
+        $('.myvideo')[1].addEventListener('play', function(){
+            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnSocial']);
         });
         //video.addEventListener('play', function(){
         //    //not iphone
@@ -77,6 +84,7 @@
 
         // for buy button
         $('.btn-buy').on('touchstart click', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'buyButtonOnSocial']);
             //go second page and show qrcode img
             Common.gotoPin(1);
             self.generateQrcode();

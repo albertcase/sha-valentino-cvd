@@ -22,6 +22,7 @@ function weixinshare(obj,successCallBack){
             type: '',
             dataUrl: '',
             success: function () {
+                _hmt.push(['_trackEvent', 'wechat', 'share', 'shareOnMenuShareAppMessage']);
                 successCallBack();
 
             },
@@ -34,6 +35,7 @@ function weixinshare(obj,successCallBack){
             link: obj.link,
             imgUrl: obj.img,
             success: function () {
+                _hmt.push(['_trackEvent', 'wechat', 'share', 'shareOnMenuShareTimeline']);
                 successCallBack();
             },
             cancel: function () {
