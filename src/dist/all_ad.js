@@ -481,13 +481,16 @@ $(document).ready(function(){
                 $(this).parent().find('video')[0].play();
             }
         });
-        $('.myvideo')[0].addEventListener('play', function(){
-            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
-            $('.btn-play').addClass('hide');
-        });
-        $('.myvideo')[1].addEventListener('play', function(){
-            _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
-        });
+        if(navigator.userAgent.toLocaleLowerCase().indexOf('mobile')>-1){
+            $('.myvideo')[0].addEventListener('play', function(){
+                _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
+                $('.btn-play').addClass('hide');
+            });
+            $('.myvideo')[1].addEventListener('play', function(){
+                _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
+                $('.btn-play').addClass('hide');
+            });
+        }
 
         /*
          * Imitate the checkbox function, default value is false(not selected)
