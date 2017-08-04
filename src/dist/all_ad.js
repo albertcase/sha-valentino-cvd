@@ -483,6 +483,7 @@ $(document).ready(function(){
         });
         $('.myvideo')[0].addEventListener('play', function(){
             _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
+            $('.btn-play').addClass('hide');
         });
         $('.myvideo')[1].addEventListener('play', function(){
             _hmt.push(['_trackEvent', 'video', 'play', 'playVideoOnAd']);
