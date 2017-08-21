@@ -431,7 +431,6 @@ $(document).ready(function(){
                 $('.btn-play').addClass('hide');
             });
         }
-
         //video.addEventListener('play', function(){
         //    //not iphone
         //    if(!(navigator.userAgent.indexOf('iPhone')>-1)){

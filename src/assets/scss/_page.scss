@@ -603,3 +603,39 @@ body{
     }
   }
 }
+
+/*For page-greeting*/
+#page-greeting{
+  color: #333;
+  font-size: 0.26rem;
+  text-align: center;
+  .slide-img{
+    @include size(5.49rem,4.63rem);
+    margin: 0.2rem auto;
+  }
+  .title{
+    font-weight: bold;
+    font-size: 0.28rem;
+    margin-bottom: 0.1rem;
+  }
+  .subtitle{
+    font-size: 0.26rem;
+    font-weight: normal;
+  }
+  .btn-gobuy{
+    margin: 0 auto;
+    a{
+      display: block;
+      color: #333;
+      text-decoration: none;
+      padding: 0.1rem;
+    }
+  }
+  .qrcode{
+    @include size(2.28rem,2.27rem);
+    margin: 0 auto 0.3rem;
+  }
+}
+
+
+/*-----------End page-greeting-----------*/

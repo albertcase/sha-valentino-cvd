@@ -1796,3 +1796,40 @@ body {
 #alert-pop .btn-close-ok:before, #alert-pop .btn-close-ok:after {
   display: none;
 }
+
+/*For page-greeting*/
+#page-greeting {
+  color: #333;
+  font-size: 0.26rem;
+  text-align: center;
+}
+#page-greeting .slide-img {
+  width: 5.49rem;
+  height: 4.63rem;
+  margin: 0.2rem auto;
+}
+#page-greeting .title {
+  font-weight: bold;
+  font-size: 0.28rem;
+  margin-bottom: 0.1rem;
+}
+#page-greeting .subtitle {
+  font-size: 0.26rem;
+  font-weight: normal;
+}
+#page-greeting .btn-gobuy {
+  margin: 0 auto;
+}
+#page-greeting .btn-gobuy a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 0.1rem;
+}
+#page-greeting .qrcode {
+  width: 2.28rem;
+  height: 2.27rem;
+  margin: 0 auto 0.3rem;
+}
+
+/*-----------End page-greeting-----------*/
