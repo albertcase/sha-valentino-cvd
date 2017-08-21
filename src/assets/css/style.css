@@ -1800,21 +1800,24 @@ body {
 /*For page-greeting*/
 #page-greeting {
   color: #333;
-  font-size: 0.26rem;
+  font-size: 0.24rem;
   text-align: center;
+  line-height: 1.4;
+}
+#page-greeting .v-content {
+  width: 100vw;
 }
 #page-greeting .slide-img {
-  width: 5.49rem;
-  height: 4.63rem;
+  width: 5rem;
   margin: 0.2rem auto;
 }
 #page-greeting .title {
   font-weight: bold;
-  font-size: 0.28rem;
+  font-size: 0.26rem;
   margin-bottom: 0.1rem;
 }
 #page-greeting .subtitle {
-  font-size: 0.26rem;
+  font-size: 0.24rem;
   font-weight: normal;
 }
 #page-greeting .btn-gobuy {

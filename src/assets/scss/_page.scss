@@ -607,19 +607,23 @@ body{
 /*For page-greeting*/
 #page-greeting{
   color: #333;
-  font-size: 0.26rem;
+  font-size: 0.24rem;
   text-align: center;
+  line-height: 1.4;
+  .v-content{
+    width: 100vw;
+  }
   .slide-img{
-    @include size(5.49rem,4.63rem);
+    width: 5rem;
     margin: 0.2rem auto;
   }
   .title{
     font-weight: bold;
-    font-size: 0.28rem;
+    font-size: 0.26rem;
     margin-bottom: 0.1rem;
   }
   .subtitle{
-    font-size: 0.26rem;
+    font-size: 0.24rem;
     font-weight: normal;
   }
   .btn-gobuy{
