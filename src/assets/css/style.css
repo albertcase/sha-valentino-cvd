@@ -1837,5 +1837,8 @@ body {
   height: 2.27rem;
   margin: 0 auto 0.6rem;
 }
+#page-greeting .tips {
+  margin-bottom: 0.6rem;
+}
 
 /*-----------End page-greeting-----------*/
