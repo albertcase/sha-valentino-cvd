@@ -1802,26 +1802,29 @@ body {
   color: #333;
   font-size: 0.24rem;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 #page-greeting .v-content {
   width: 100vw;
 }
+#page-greeting .logo {
+  margin: 0.6rem auto;
+}
 #page-greeting .slide-img {
-  width: 5rem;
-  margin: 0.2rem auto;
+  width: 5.49rem;
+  margin: 0 auto 0.6rem;
 }
 #page-greeting .title {
   font-weight: bold;
   font-size: 0.26rem;
-  margin-bottom: 0.1rem;
 }
 #page-greeting .subtitle {
   font-size: 0.24rem;
   font-weight: normal;
+  margin: 0.3rem 0;
 }
 #page-greeting .btn-gobuy {
-  margin: 0 auto;
+  margin: 0 auto 0.3rem;
 }
 #page-greeting .btn-gobuy a {
   display: block;
@@ -1832,7 +1835,7 @@ body {
 #page-greeting .qrcode {
   width: 2.28rem;
   height: 2.27rem;
-  margin: 0 auto 0.3rem;
+  margin: 0 auto 0.6rem;
 }
 
 /*-----------End page-greeting-----------*/
